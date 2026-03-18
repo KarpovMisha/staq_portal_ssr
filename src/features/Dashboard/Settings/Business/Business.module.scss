@@ -1,0 +1,53 @@
+.business {
+  display: flex;
+  gap: 24px;
+  flex-direction: column;
+  color: var(--text-color-primary);
+
+  h4 {
+    font-size: 24px;
+  }
+
+  &__form {
+    display: flex;
+    gap: 12px;
+
+    > div:first-child {
+      flex: 1 1 auto;
+
+      input {
+        padding-inline: 10px;
+        padding-block: 8px;
+      }
+    }
+
+    button {
+      align-self: flex-end;
+      height: 36px;
+      padding: 6px 10px 6px;
+      font-size: 14px;
+    }
+  }
+
+  &__form_address {
+    display: flex;
+    gap: 12px;
+    flex-direction: column;
+
+    > div:first-child {
+      border: 1px solid var(--border-primary);
+      border-radius: 4px;
+
+      input {
+        border: none;
+      }
+    }
+
+    button {
+      align-self: flex-end;
+      height: 36px;
+      padding: 6px 10px 6px;
+      font-size: 14px;
+    }
+  }
+}
