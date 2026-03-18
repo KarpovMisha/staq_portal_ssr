@@ -1,3 +1,4 @@
+import { phoneFlags } from "@/shared/config/phoneFlags";
 import { useMemo } from "react";
 import { Field } from "react-final-form";
 import {
@@ -66,9 +67,9 @@ export default function FormPhoneInput({
   }, [hidden]);
 
   // Optional: keep flags in sync with hiddenCountries too
-  // const flags = useMemo(() => {
-  //   return phoneFlags.filter((f) => !hidden.has(f.iso2));
-  // }, [hidden]);
+  const flags = useMemo(() => {
+    return phoneFlags.filter((f) => !hidden.has(f.iso2));
+  }, [hidden]);
 
   return (
     <Field<string> name={name}>
@@ -88,7 +89,7 @@ export default function FormPhoneInput({
             placeholder={placeholder}
             countries={countries}
             defaultCountry={defaultCountry}
-            // flags={flags}
+            flags={flags}
             inputProps={{
               id: name,
               name,

@@ -63,3 +63,14 @@
 .react-international-phone-country-selector-button__dropdown-arrow {
   display: none;
 }
+
+.react-international-phone-flag-emoji,
+.flagCircle {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-position: center;
+
+  background-size: cover;
+}
