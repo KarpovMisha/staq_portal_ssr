@@ -1,0 +1,43 @@
+.cert_table {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-block-start: 2rem;
+
+  &__title {
+    font-size: 24px;
+    font-family: var(--font-familly-whyte-medium);
+    color: var(--text-color-primary);
+  }
+
+  &__description {
+    max-inline-size: 60rem;
+    color: #3f3f45;
+    font-family: var(--font-familly-grotesk);
+    color: var(--text-color-secondary);
+  }
+
+  &__table {
+    &--buttons {
+      >button:last-child {
+        margin-left: 8px;
+        border: 1px solid var(--border-primary);
+        background: var(--bg-secondary);
+      }
+    }
+    &--button {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+
+      svg {
+        width: 16px;
+        height: 16px;
+
+        path {
+          fill: var(--text-color-primary);
+        }
+      }
+    }
+  }
+}

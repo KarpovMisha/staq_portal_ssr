@@ -1,0 +1,73 @@
+.topBarActions {
+  --svg-color: 0000;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+
+  &__search {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    border: 1px solid var(--border-primary);
+    border-radius: 5px;
+    color: #717179;
+  }
+  &__search_icon {
+    position: absolute;
+    top: 57%;
+    left: 1rem;
+    color: #999;
+    transform: translateY(-57%);
+    pointer-events: none;
+
+    svg {
+      width: 14px;
+      height: 14px;
+      path {
+        fill: var(--svg-color);
+      }
+    }
+  }
+  &__input {
+    display: block;
+    width: 100%;
+    padding-inline: 3rem 1rem;
+    padding-block: 0.4rem;
+    border: none;
+    background: var(--api-category-bg);
+    color: var(--api-search-text-color);
+    // font-family: "Whyte";
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 5px;
+    border-radius: 5px;
+    background: #efeff1;
+    cursor: pointer;
+  }
+  &__plus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 5px;
+    border-radius: 5px;
+    background: #000;
+    cursor: pointer;
+    svg {
+      path {
+        fill: #fff;
+      }
+    }
+  }
+}

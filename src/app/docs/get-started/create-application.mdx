@@ -1,0 +1,107 @@
+import Image from 'next/image'
+import { ButtonNavigation, SignUpButton, LinkNavigation } from '../MdxHelper.jsx';
+import img1 from '@/ui/images/CreateApplication/general_dark.png';
+import img2 from '@/ui/images/CreateApplication/configuration_dark.png';
+import img3 from '@/ui/images/CreateApplication/api_select_dark.png';
+import img4 from '@/ui/images/CreateApplication/app_dash_dark.png';
+// import WarningIcon from '@/ui/icons/alert-warning.svg';
+
+<h1 id="create-application" data-typography="Create application">Create application</h1>
+
+To start building with Staq, you’ll first create an application in your developer dashboard. Your
+app stores the credentials and settings you’ll use to connect securely to the Staq API.
+<div className="spacer"></div>
+<h2 id="create-staq-account" className="circle" data-typography="Create Staq account"><span>1</span>Create Staq account</h2>
+
+To access the Staq platform you need to create an account and access the developer dashboard. The
+dashboard is where you can manage your preferences and applications.
+<SignUpButton />
+<div className="spacer"></div>
+<h2 id="create-new-pplication" className="circle" data-typography="Create New Application"><span>2</span>Create New Application</h2>
+
+Once you have access to your dashboard, you will need to create your first application.
+
+<ButtonNavigation to="/dashboard/apps" label="Create application" />
+<div className="spacer"></div>
+<div className="img-container">
+  <div>
+    <Image src={img1} alt="General Settings" />
+  </div>
+  <div>General Settings</div>
+</div>
+
+<h3 data-typography="Name and description">Name and description</h3>
+
+Provide a unique name and a short description for your application.<br />
+This works similarly to naming a GitHub repository, the name helps you identify your app later, and the description gives context
+about its purpose or functionality.
+
+<h3 data-typography="Configuration">Configuration</h3>
+
+Next, select whether your application is Business-to-Business (B2B)<br />
+or Business-to-Consumer (B2C).
+
+<div className="warning-message"> This selection cannot be changed once the application is created.</div>
+
+##### Business to business
+
+B2B apps connect with business entities only — they do not support end-user interactions.
+
+##### Business to consumer
+
+B2C apps are intended for individual consumers and include APIs for managing personal user data and sessions.
+
+The chosen configuration determines which APIs and features your app can access. Choose carefully based on your target users and integration requirements.
+
+<div className="img-container">
+  <div>
+    <Image src={img2} alt="General Settings" />
+  </div>
+  <div>Configuration Settings</div>
+</div>
+
+<h3 id="required-apis" data-typography="Required APIs">Required APIs</h3>
+
+Choose the APIs your application will depend on. Each API provides specific functionality
+or data access. Select only those required for your use case, additional APIs can
+typically be added later if needed.
+
+<div className="note" role="note">
+  <div className="note__icon" aria-hidden="true">
+    <span className="info-icon">i</span>
+  </div>
+
+  <div  className="note__content">
+    <div className="note__title">Select only the APIs your application requires.</div>
+    <div className="note__text">
+      Doing so keeps your integration secure, efficient, and easier to maintain.
+
+      You can modify your API selections at any time after the application is created.
+    </div>
+  </div>
+</div>
+
+<div className="img-container">
+  <div>
+    <Image src={img3} alt="General Settings" />
+  </div>
+  <div>Configuration API settings</div>
+</div>
+
+When you’re happy with your configuration, click Create app to finish setup.
+
+Your new app will appear in your dashboard, where you can view your public and secret keys and manage its settings anytime from the Settings tab.
+
+<div className="img-container">
+  <div>
+    <Image src={img4} alt="General Settings" />
+  </div>
+  <div>App Information in dashboard</div>
+</div>
+<div className="spacer"></div>
+## Next steps
+
+Your app credentials are now ready to be linked with a secure certificate.
+
+- Continue to <LinkNavigation to="/dashboard/certificates" label="Generate CSR certificate" /> to create and upload your signed client certificate.
+<div className="spacer"></div>

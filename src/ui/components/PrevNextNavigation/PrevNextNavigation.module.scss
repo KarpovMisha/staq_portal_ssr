@@ -1,0 +1,44 @@
+.page_navigation {
+  display: grid;
+  grid-template-columns: var(--page-nav-cols, 1fr);
+  gap: 16px;
+  margin-block-end: 64px;
+
+  &__button {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    padding: 16px;
+    border: 1px solid var(--border-primary);
+    border-radius: 12px;
+
+    > div {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      color: var(--text-color-tertiary);
+      font-size: 14px;
+
+      svg {
+        path {
+          fill: var(--text-color-primary);
+        }
+      }
+    }
+
+    > span {
+      color: var(--text-color-primary);
+    }
+
+    svg {
+      transform: rotate(90deg);
+    }
+
+    &--next {
+      align-items: end;
+      svg {
+        transform: rotate(270deg);
+      }
+    }
+  }
+}

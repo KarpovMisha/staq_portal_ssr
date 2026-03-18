@@ -1,0 +1,150 @@
+.app_filters {
+  --border-radius: 4px;
+
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-block-start: 6px;
+  margin-block-end: 40px;
+
+  &__grids {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+    svg {
+      path {
+        fill: var(--text-color-primary);
+      }
+    }
+  }
+
+  &__sorting {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--border-primary);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    margin: 2px;
+    position: relative;
+
+    &--desc,
+    &--asc {
+      background: transparent;
+
+      &:before {
+        content: '';
+        position: absolute;
+        inset: 2px;
+        border-radius: calc(var(--border-radius) - 2px);
+        background: var(--bg-secondary);
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      // keep inner content above the pseudo background
+      > * {
+        position: relative;
+        z-index: 1;
+      }
+    }
+
+    &--desc {
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &__toggle {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--border-primary);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+  }
+
+  &__view {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 27px;
+    height: 26px;
+    margin: 2px;
+    border-radius: 4px;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    svg {
+      transition: transform 0.3s ease;
+    }
+  }
+
+  /* Активное состояние */
+  &__view {
+    &--active {
+      background: var(--bg-secondary);
+    }
+  }
+
+  /* При активном состоянии вся рамка меняет оттенок */
+  // &__toggle:has(.app_filters__view--active) {
+  //   border-color: #555;
+  // }
+
+  &__search {
+    // display: flex;
+    // align-items: center;
+    width: 100%;
+    position: relative;
+    border: 1px solid var(--border-primary);
+    border-radius: var(--border-radius);
+    color: #717179;
+  }
+  &__search_icon {
+    position: absolute;
+    top: 57%;
+    left: 1rem;
+    color: #999;
+    transform: translateY(-57%);
+    pointer-events: none;
+
+    svg {
+      width: 14px;
+      height: 14px;
+      path {
+        fill: var(--text-color-tertiary);
+      }
+    }
+  }
+  &__input {
+    display: block;
+    width: 100%;
+    padding-inline: 3rem 1rem;
+    padding-block: 0.4rem;
+    border: none;
+    background: var(--api-category-bg);
+    color: var(--text-color-tertiary);
+    // font-family: "Whyte";
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  &__button {
+    button {
+      width: 10.3rem;
+      padding-inline: 1.2rem;
+      padding-block: 0.4rem;
+      border-radius: var(--border-radius);
+      color: #fff;
+      font-family: var(--font-familly-whyte-medium);
+      font-size: 14px;
+      letter-spacing: -0.3px;
+    }
+  }
+}

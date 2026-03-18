@@ -1,0 +1,105 @@
+.api_search {
+
+  &__dialog {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 96px; /* fixed vertical position */
+    width: min(760px, 94%);
+    max-height: calc(100vh - 160px);
+    padding: 12px 14px;
+    border-radius: 10px;
+    background: var(--bg-primary);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+    overflow: auto;
+    color: var(--text-color-primary);
+    -webkit-overflow-scrolling: touch;
+  }
+
+  &__search {
+    width: 100%;
+    margin-block: 6px;
+    position: relative;
+    border: 1px solid var(--border-primary);
+    border-radius: var(--border-radius);
+    background: transparent;
+    color: #717179;
+  }
+  &__search_icon {
+    position: absolute;
+    top: 57%;
+    left: 1rem;
+    color: #999;
+    transform: translateY(-57%);
+    pointer-events: none;
+
+    svg {
+      width: 14px;
+      height: 14px;
+      path {
+        fill: var(--text-color-tertiary);
+      }
+    }
+  }
+  &__input {
+    display: block;
+    width: 100%;
+    padding-inline: 3rem 1rem;
+    padding-block: 0.4rem;
+    border: none;
+    background: var(--api-category-bg);
+    color: var(--text-color-tertiary);
+    // font-family: "Whyte";
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  &__results {
+    display: flex;
+    gap: 6px;
+    flex-direction: column;
+  }
+
+  &__no_results {
+    padding: 18px;
+    color: var(--text-color-tertiary);
+    text-align: center;
+  }
+
+  &__result {
+    border: none;
+    background-color: transparent;
+    text-align: left;
+    padding-block-end: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+    &--name {
+      // display: flex;
+      // gap: 8px;
+      // align-items: center;
+      font-size: 16px;
+      color: var(--text-color-primary);
+    }
+
+    &--details {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      color: var(--text-color-tertiary);
+    }
+      &__highlight,
+      &-highlight {
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 2px;
+        text-decoration-color: var(--accent, #3fb6a8);
+      }
+
+    &--description{
+      color: var(--text-color-tertiary);
+    }
+  }
+}

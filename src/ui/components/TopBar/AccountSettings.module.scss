@@ -1,0 +1,97 @@
+.account_settings {
+
+  &__trigger {
+    background: var(--bg-secondary);
+    color: var(--text-color-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    margin-block: 6px;
+    cursor: pointer;
+
+    svg {
+      path {
+        fill: var(--text-color-primary);
+      }
+    }
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(360deg, #8F3BD1 0%, #EE3E9C 70%, #F6476E 100%);
+    color: white;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    user-select: none;
+    justify-self: center;
+    border: 1px solid var(--border-primary);
+  }
+
+  &__arrow {
+    display: flex;
+    align-items: center;
+    &--open {
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &__body {
+    background: var(--bg-primary);
+    color: var(--text-color-primary);
+    border: 1px solid var(--border-primary);
+    border-radius: 12px;
+    inline-size: 248px;
+  }
+
+  &__row {
+    padding: 6px 12px;
+    text-align: center;
+
+    svg {
+      path {
+        fill: var(--text-color-primary);
+      }
+    }
+
+    &--devider {
+      border-bottom: 1px solid var(--border-primary);
+    }
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+
+    span {
+      margin-left: 4px;
+    }
+  }
+
+  &__switcher {
+    >div {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+
+    svg {
+      transform: rotate(270deg);
+    }
+  }
+}

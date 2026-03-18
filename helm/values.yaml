@@ -1,0 +1,48 @@
+name: finto-brand-website
+deployment:
+  image:
+    name: finto-brand-website
+
+  replicaCount: 2
+
+  podSecurityContext:
+    fsGroup: 20001
+    runAsGroup: 20001
+    runAsUser: 20001
+
+  resources:
+    limits:
+      cpu: 500m
+      memory: 512Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
+
+  livenessProbe:
+    httpGet:
+      path: /
+      port: 8080
+    initialDelaySeconds: 30
+    periodSeconds: 10
+
+  readinessProbe:
+    httpGet:
+      path: /
+      port: 8080
+    initialDelaySeconds: 30
+    periodSeconds: 10
+
+ingress:
+  enabled: true
+  type: "brandwebsite"
+  rules:
+    - path: /
+      pathType: Prefix
+      backend:
+        service:
+          name: "{{ .Values.name }}"
+          port: "{{ .Values.service.port }}"
+
+monitoring:
+  prometheus:
+    enabled: false

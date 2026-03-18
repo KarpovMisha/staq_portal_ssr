@@ -1,0 +1,8 @@
+.page_container {
+  display: flex;
+  gap: 56px;
+  flex-direction: column;
+  width: 100%;
+  max-inline-size: var(--content-width);
+  padding-inline: 16px;
+}

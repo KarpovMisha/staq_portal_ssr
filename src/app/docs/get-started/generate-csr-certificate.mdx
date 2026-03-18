@@ -1,0 +1,120 @@
+import Image from 'next/image'
+import { ButtonNavigation, LinkNavigation } from '../MdxHelper.jsx';
+import { InlineCodeBlock } from '@/ui/components/index';
+import img1 from '@/ui/images/GenerateCertificate/uplod_cert_dark.png';
+import img2 from '@/ui/images/GenerateCertificate/export_cert_dark.png';
+
+<h1 id="generate-csr-certificate" data-typography="Generate CSR certificate">Generate CSR certificate</h1>
+
+Follow these steps to create and install a test certificate. Keep your private key secure, only the CSR and certificate are shared with Staq.
+
+<ButtonNavigation to="/dashboard/certificates" label="Generate certificate" />
+<div className="spacer"></div>
+<h2 id="generate-a-private-key" data-typography="Generate a private key">Generate a private key</h2>
+
+Open your terminal and create a new RSA private key. This file stays on your system keep it safe and never share it with anyone.
+
+<InlineCodeBlock code="$ openssl genrsa -out server.key 2048 " />
+<div className="spacer"></div>
+<h2 id="generate-a-certificate-signing-request" data-typography="Generate a Certificate Signing Request (CSR)">Generate a Certificate Signing Request (CSR)</h2>
+
+Use your private key to generate a CSR. This file contains your public key and organisation details, which we’ll use to issue your Sandbox certificate.
+
+<InlineCodeBlock code="$ openssl genrsa -out server.key 2048 " />
+
+You will be asked to provide the following information during CSR creation process:
+
+ <div className="table" style={{ ['--table-cols']: '175px 1fr 175px' }}>
+  <div className="table--header">
+    <span>Promt</span>
+    <span>Description</span>
+    <span>Example Value</span>
+  </div>
+  <div className="table--body">
+    <div className="table--row">
+      <span>Country Code <br />(2 letters)</span>
+      <span>
+        Enter the two-letter ISO country code where your company is legally registered.
+      </span>
+      <span>US, CA, GB</span>
+    </div>
+
+    <div className="table--row">
+      <span>State or Province</span>
+      <span>
+        Enter the full name of the state or province where your company is located.
+      </span>
+      <span>California, Ontario</span>
+    </div>
+
+    <div className="table--row">
+      <span>City / Locality</span>
+      <span>Enter the city name of your company’s main office</span>
+      <span>San Francisco, Toronto</span>
+    </div>
+
+    <div className="table--row">
+      <span>Organization Name</span>
+      <span>Enter your company’s full legal name, as it appears in official records.</span>
+      <span>Staq Technologies Inc</span>
+    </div>
+    <div className="table--row">
+      <span>
+        Organizational Unit <br />
+        (optional)
+      </span>
+      <span>
+        If applicable, enter the department or division requesting the certificate.
+      </span>
+      <span>IT Department, Security Team</span>
+    </div>
+    <div className="table--row">
+      <span>
+        Common Name <br />
+        (Username)
+      </span>
+      <span>
+        Enter the username you use to log in to the Developer Portal. This field uniquely
+        identifies your account.
+      </span>
+      <span>name@email.com</span>
+    </div>
+    <div className="table--row">
+      <span>Email Address</span>
+      <span>
+        Enter the email address associated with your developer profile. This must match your
+        registered account email.
+      </span>
+      <span>name@email.com</span>
+    </div>
+  </div>
+</div>
+<div className="spacer"></div>
+<h2 id="upload-your-certificate" data-typography="Upload your certificate">Upload your certificate</h2>
+
+Upload your .csr file to get your signed Sandbox certificate. Once it’s ready, you can download it and use it to authenticate with our APIs.
+
+<div className="img-container">
+  <div>
+    <Image src={img1} alt="Certificate upload interface" />
+  </div>
+  <div>Certificate (.csr) upload interface</div>
+</div>
+<div className="spacer"></div>
+<h2 id="download-your-certificate" data-typography="Download your certificate">Download your certificate</h2>
+
+You can access your certificate from your dashboard at anytime. Navigate to 'Certificates' in the left navigation and you'll find all of your signed certificates.
+
+<div className="img-container">
+  <div>
+    <Image src={img2} alt="Certificates location in dashboard" />
+  </div>
+  <div>Certificates location in dashboard</div>
+</div>
+<div className="spacer"></div>
+## Next steps
+
+Your app is now connected to the Staq Sandbox, where you can explore endpoints, test integrations, and get familiar with how the platform works, all in a safe environment.
+
+- Visit the <LinkNavigation to="/" label="Docs homepage" /> homepage to explore product-specific guides and API references.
+- Follow the <LinkNavigation to="/" label="Go Live guide" /> when you’re ready to move from sandbox to production.

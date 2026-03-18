@@ -1,0 +1,60 @@
+.resources {
+  h2 {
+    color: var(--text-color-primary);
+    padding-block-end: 32px;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  &__link {
+    padding: 16px;
+    border: 1px solid var(--border-primary);
+    border-radius: 16px;
+    background-color: var(--bg-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &--title {
+      color: var(--text-color-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+      letter-spacing: -0.4px;
+      padding-block-end: 6px;
+
+      svg {
+        path {
+          fill: var(--text-color-primary);
+        }
+      }
+    }
+
+    &--description {
+      color: var(--text-color-tertiary);
+      font-size: 14px;
+      font-family: var(--font-familly-grotesk);
+    }
+
+    &--arrow {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background-color: var(--bg-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        path {
+          fill: var(--text-color-primary);
+        }
+      }
+    }
+  }
+}

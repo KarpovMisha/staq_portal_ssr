@@ -1,0 +1,27 @@
+.topBarAuthentication {
+  position: relative;
+  &__buttons {
+    display: flex;
+    gap: 10px;
+
+    button {
+      font-size: 14px;
+    }
+  }
+
+  &__loggedIn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    a {
+      background-color: var(--bg-tertiary);
+      border-radius: 8px;
+      padding-inline: 12px;
+      padding-block: 4px;
+      font-size: 14px;
+      text-decoration: inherit;
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,110 @@
+.prod_certificate {
+  width: 300px;
+  padding: 24px;
+  color: var(--text-color-primary);
+
+  &__steps {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    list-style: none;
+
+    &::before {
+      content: '';
+      width: 1px;
+      position: absolute;
+      top: 20px;
+      bottom: 20px;
+      left: 10px;
+      z-index: 0;
+      border-radius: 2px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+  }
+
+  &__step {
+    padding: 4px 0 4px 30px;
+    position: relative;
+  }
+
+  &__head {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+
+    >span:last-child {
+      font-size: 14px;
+    }
+  }
+
+  &__number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 6px;
+    left: 0;
+    border: 2px solid var(--border-primary);
+    border-radius: 50%;
+    background: var(--bg-primary);
+    font-size: 10px;
+    color: var(--text-color-tertiary);
+
+    &--active {
+        border-color: var(--text-color-primary);
+        color: var(--text-color-primary);
+    }
+  }
+
+
+  &__sublist {
+    // margin: 10px 0 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__subitem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 0;
+    position: relative;
+
+    &--active {
+      &::before {
+        content: '';
+        width: 1px;
+        position: absolute;
+        top: 4px;
+        bottom: 2px;
+        left: -20px; /* position bar between the main vertical line and subitem label */
+        background: var(--text-color-primary);
+      }
+    }
+  }
+
+  &__subLabel {
+    font-size: 14px;
+  }
+
+  &__radio {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--border-primary);
+    border-radius: 50%;
+
+    &--active {
+      border-color: var(--text-color-primary);
+    }
+
+    &--success {
+      border: none;
+      background-image: url('styles/icon/dashboard/check_success.svg?react');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+}

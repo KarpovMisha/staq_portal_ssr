@@ -1,0 +1,60 @@
+.custom-light-mode-toast {
+  background: transparent !important;
+}
+.toast_success {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 16px;
+  border: 1px solid #13bf3e;
+  border-radius: 8px;
+  background: #053311;
+  color: #fff;
+
+  &__button {
+    display: flex;
+
+    button {
+      padding: 0 !important;
+    }
+    svg {
+      margin-right: 0 !important;
+      path {
+        fill: #fff;
+      }
+    }
+  }
+}
+
+.toast_error {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 16px;
+  border: 1px solid #cc3314;
+  border-radius: 8px;
+  background: #2e0c05;
+  color: #fff;
+
+  &__button {
+    display: flex;
+
+    button {
+      padding: 0 !important;
+    }
+
+    svg {
+      margin-right: 0 !important;
+      path {
+        fill: #fff;
+      }
+    }
+  }
+
+  &__retry_button {
+    position: relative;
+    :global(.button) {
+      padding: 2px 9px;
+    }
+  }
+}

@@ -1,0 +1,185 @@
+import { LinkNavigation, Tabs, Tab } from "../MdxHelper.jsx";
+import { CodeHighlighter, InlineCodeBlock } from '@/ui/components';
+
+export const JSON = `{
+  "status": "ok",
+  "service": "staq-api",
+  "env": "sandbox"
+}`;
+
+export const CREDENTIALS = `export CLIENT_ID="your-client-id"
+export CLIENT_SECRET="your-client-secret"
+export CERT_PATH="./certs/client.crt"
+export KEY_PATH="./certs/client.key"`;
+
+export const TOKEN_CURL = `ACCESS_TOKEN=$(
+  curl -sS --fail \\
+    --cert $CERT_PATH --key $KEY_PATH \\
+    -u "$CLIENT_ID:$CLIENT_SECRET" \\
+    -d "grant_type=client_credentials" \\
+    "https://auth.staq.com/oauth/token" | jq -r '.access_token'
+)`;
+
+export const TEST_REQUEST_CURL = `{
+  "status": "ok",
+  "service": "staq-api",
+  "env": "sandbox"
+}`;
+
+<h1 id="make-your-first-api-call" data-typography="Make your first API call">Make your first API call</h1>
+
+Once your app is set up and your <LinkNavigation to="/dashboard/certificates" label="certificate" /> is ready, you can make your first authenticated request to the Staq API.
+
+This call verifies that your credentials and certificate are configured correctly it’s a quick “handshake” between your app and Staq.
+
+<div className="note" role="note">
+  <div className="note__icon" aria-hidden="true">
+    <span className="info-icon">i</span>
+  </div>
+
+  <div className="note__content">
+    <div className="note__title">Before starting, make sure you’ve:</div>
+    <div className="note__text">
+      <ul>
+        <li><LinkNavigation to="/dashboard/apps" label="Created your app" /> and noted your Client ID and Client Secret</li>
+        <li><LinkNavigation to="/dashboard/certificates" label="Generated and uploaded your certificate" /> so it’s signed and ready to use</li>
+        <li>Installed your certificate and key on the machine you’ll use to connect</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div className="spacer"></div>
+<h2 id="choose-your-setup" data-typography="Choose your setup">Choose your setup</h2>
+
+You can make your first call in one of two ways:
+
+1. Terminal – Run a single command using `curl`. Great for testing, automation, or if you prefer a command line workflow.
+2. Postman – Use a visual interface to manage credentials, certificates, and API requests without writing any code.
+
+Select your preferred option below to get started.
+<div className="spacer"></div>
+<Tabs>
+  <Tab label="Terminal">
+    <div className="spacer"></div>
+    ## Terminal set up
+
+    Use this method if you’re comfortable with the command line or want to test Staq from a server environment.
+
+    You’ll authenticate with your client certificate and keys, then call a simple /ping endpoint to confirm the connection.
+    <div className="spacer"></div>
+    ### 1. Export your credentials
+
+    <CodeHighlighter code={CREDENTIALS} language="bash" />
+    <div className="spacer"></div>
+    ### 2. Request an access token
+
+    <CodeHighlighter code={TOKEN_CURL} language="bash" />
+
+    To confirm it worked:
+
+    <InlineCodeBlock code="echo $ACCESS_TOKEN" />
+    <div className="spacer"></div>
+    ### 3. Send a test request
+    <CodeHighlighter code={TEST_REQUEST_CURL} language="json" />
+  </Tab>
+
+  <Tab label="Postman">
+    <div className="spacer"></div>
+    ## Postman set up
+
+    Postman is an API client that lets you make calls without writing code. It’s the simplest way to test your connection and confirm your credentials are working.
+
+    ### 1. Add your client certificate
+
+    1. Go to Settings → Certificates
+        - Host: sandbox.api.staq.io
+        - CRT file: your signed certificate (client.crt)
+        - KEY file: your private key (client.key)
+    2. Click Add Certificate and enter the details.
+    3. Save and ensure “SSL certificate verification” is turned on.
+
+    ### 2. Create a new environment
+
+    Add the following variables
+
+    <div
+      className="table"
+      style={{ ['--table-cols']: '240px 1fr' }}
+    >
+      <div className="table--header">
+        <span>Variable</span>
+        <span>Example Value</span>
+      </div>
+      <div className="table--body">
+        <div className="table--row">
+          <span className="badge">BASE_URL</span>
+          <span className="badge value">https://sandbox.api.staq.io</span>
+        </div>
+
+        <div className="table--row">
+          <span className="badge">AUTH_URL</span>
+          <span className="badge value">https://auth.staq.com/oauth/token</span>
+        </div>
+
+        <div className="table--row">
+          <span className="badge">CLIENT_ID</span>
+          <span className="value">Your app's client ID</span>
+        </div>
+
+        <div className="table--row">
+          <span className="badge">CLIENT_SECRET</span>
+          <span className="value">Your app’s Client Secret</span>
+        </div>
+      </div>
+    </div>
+    <div className="spacer"></div>
+    ### 3. Generate an access token
+
+    In Postman, open a new request and go to the Authorization tab.
+
+    1. Select OAuth 2.0
+    2. Click Get New Access Token
+    3. Fill in the fields:
+        - Token Name: Staq Sandbox
+        - Grant Type: Client Credentials
+        - Access Token URL: `{{AUTH_URL}}`
+        - Client ID: `{{CLIENT_ID}}`
+        - Client Secret: `{{CLIENT_SECRET}}`
+        - Client Authentication: Send as Basic Auth header
+    4. Click Get New Access Token. Postman will use your certificate to authenticate and return a token.
+    5. Click Use Token — Postman will automatically add it to your next request.
+
+    <div className="spacer"></div>
+
+    #### 4. Make a test API call
+
+    Create a new GET request to:
+
+    <InlineCodeBlock code="{{BASE_URL}}/v1/ping" />
+
+    Under the Authorization tab, ensure Bearer Token is selected and your token is filled in.
+
+    Click Send.
+  </Tab>
+</Tabs>
+
+<h4 id="expected-response:" data-typography="Expected response:">Expected response:</h4>
+<CodeHighlighter code={JSON} language="json" />
+
+You’re connected! The Staq API recognised your certificate and verified your credentials.
+
+<div className="spacer"></div>
+<h2 id="success" data-typography="Success">Success</h2>
+
+If you see a 200 OK response with "status": "ok", your app is now successfully connected to the Staq API.
+
+You’re ready to start making real requests — for example, fetching account data, creating transactions, or subscribing to webhooks.
+
+<div className="spacer"></div>
+
+## Next steps
+
+Your app is now connected to the Staq Sandbox, where you can explore endpoints, test integrations, and get familiar with how the platform works, all in a safe environment.
+
+- Visit the Docs homepage to explore product-specific guides and API references.
+- Follow the Go Live guide when you’re ready to move from sandbox to production.

@@ -1,0 +1,263 @@
+:root {
+  //FINTO values
+  --btn-gradient-none-color: var(--color-blue);
+  --btn-gradient-none-outline: var(--color-blue);
+  --btn-gradient-none-border: var(--color-transparent);
+  --btn-gradient-none-bg: var(--color-gray-300);
+  // --btn-gradient-none-before: var(--color-gradient);
+  --btn-gradient-none-before-active: var(--color-white);
+  --btn-gradient-none-after-active: var(--color-gradient-type-2);
+  --btn-gradient-none-color-text-hover: var(--color-pink);
+  --btn-gradient-none-bg-text-hover: var(--color-gradient);
+  --btn-gradient-none-svg-hover-active: var(--color-pink-200);
+  --btn-gradient-none-bg-active: var(--color-gradient);
+  --btn-gradient-none-bg-text-active: var(--color-gradient);
+  //BAE values
+  --btn-gradient-none-before: #282d3c;
+
+  --button-terms-color-hover: var(--color-white);
+  --button-terms-bg: var(--color-white);
+  --button-terms-bg-hover: var(--color-blue);
+  --button-terms-border-hover: var(--color-blue);
+  --button-terms-border: var(--color-blue);
+  --button-terms-svg: var(--color-blue);
+  --button-terms-svg-hover: var(--color-white);
+
+  --button-gradient-color: var(--color-white);
+  --button-gradient-before-active: var(--color-white);
+  --button-gradient-bg: var(--color-gradient);
+  --button-gradient-bg-active: var(--color-gradient-type-3);
+  --button-gradient-bg-text-hover: var(--color-gradient-type-3);
+  --button-gradient-bg-text-active: var(--color-gradient-type-3);
+  --button-gradient-border-focus: var(--color-white);
+  --button-gradient-border-hover: var(--color-red);
+  --button-gradient-border-active: var(--color-red);
+  --button-gradient-svg-active: var(--color-red);
+  --button-gradient-svg-hover: var(--color-red);
+  --button-gradient-outline-focus: var(--color-blue);
+  --button-gradient-before-hover: var(--color-gray-300);
+  --button-gradient-after-active: var(--color-gradient-type-2);
+
+  --button-gradient-type2-bg: var(--color-gradient);
+
+  --button-delete-bg: var(--color-gradient-type-5);
+  --button-delete-bg-hover: var(--color-gradient-type-4);
+  --button-delete-color: var(--color-white);
+
+  --button-disabled-bg: var(--color-gray-400);
+  --button-disabled-svg: var(--color-gray-600);
+  --button-disabled-color: var(--color-gray-600);
+
+  --button-close-bg: var(--color-transparent);
+  --button-close-border: var(--color-white);
+  --button-close-color: var(--color-white);
+  --button-close-color-hover: var(--color-pink-200);
+  --button-close-bg-hover: var(--color-white);
+
+  --button-back-border: var(--color-gray-200);
+  --button-back-border-active: var(--color-gray-600);
+  --button-back-border-hover: var(--color-gray-500);
+  --button-back-bg: var(--color-gray-200);
+  --button-back-bg-active: var(--color-gray-400);
+  --button-back-bg-focus: var(--color-white);
+  --button-back-color: var(--color-blue);
+  --button-back-color-hover: var(--color-blue);
+  --button-back-svg: var(--color-blue);
+  --button-back-outline: var(--color-blue);
+
+  --button-collection-svg-hover: var(--color-blue);
+  --button-collection-border-hover: var(--color-gray-500);
+  --button-collection-bg: var(--color-gray-200);
+  --button-collection-bg-focus: var(--color-white);
+  --button-collection-bg-active: var(--color-gray-400);
+  --button-collection-bg-hover: var(--color-transparent);
+  --button-collection-svg: var(--color-blue-200);
+  --button-collection-outline: var(--color-blue);
+  --button-collection-color-active: var(--color-blue);
+  --button-collection-color: var(--color-blue-200);
+  --button-collection-border-color: var(--color-gray-200);
+  --button-collection-border-active: var(--bg-primary-type-6);
+
+  --button-primary-bg: var(--color-blue-200);
+  --button-primary-bg-hover: var(--color-transparent);
+  --button-primary-bg-active: var(--color-gray-400);
+  --button-primary-svg: var(--color-white);
+  --button-primary-svg-hover: var(--color-blue);
+  --button-primary-svg-active: var(--color-blue);
+  --button-primary-outline: var(--color-blue);
+  --button-primary-active: var(--color-blue);
+  --button-primary-color: var(--color-white);
+  --button-primary-border-color: var(--color-blue-200);
+  --button-primary-border-color-focus: var(--color-white);
+  --button-primary-color-hover: var(--color-blue-200);
+  --button-primary-border-color-hover: var(--color-blue-200);
+
+  --button-secondary-bg: var(--color-transparent);
+  --button-secondary-svg: var(--color-blue);
+  --button-secondary-svg-hover: var(--color-white);
+  --button-secondary-svg-active: var(--color-white);
+  --button-secondary-color: var(--color-blue);
+  --button-secondary-color-active: var(--color-white);
+  --button-secondary-border-color: var(--color-blue-200);
+  --button-secondary-color-hover: var(--color-white);
+  --button-secondary-border-color-hover: var(--color-blue-200);
+  --button-secondary-bg-hover: var(--color-blue-200);
+  --button-secondary-bg-active: var(--color-blue-300);
+  --button-secondary-outline: var(--color-blue);
+  --button-secondary-border-focus: var(--color-white);
+
+  --edit-bg: var(--color-gray-200);
+  --edit-color: var(--color-blue-200);
+  --edit-svg: var(--color-blue);
+  --edit-border-color: var(--color-gray-200);
+  --edit-color-hover: var(--color-blue-200);
+  --edit-border-color-hover: var(--color-blue-200);
+  --back-cancel-bg-active:var(--color-blue-300);
+
+  --button-submit-bg-footer: var(--color-blue);
+  --button-submit-border-footer: var(--color-blue);
+  --button-submit-bg-footer-hover: var(--color-blue-200);
+  --button-submit-color-footer: var(--color-white);
+
+  --collection-color: var(--color-blue-200);
+  --collection-svg: var(--color-blue-200);
+
+  --button-gradient-auth-none-bg: var(--color-gray-200);
+  --button-gradient-auth-none-bg-active: var(--color-gray-400);
+  --button-gradient-auth-none-bg-hover: var(--color-white);
+  --button-gradient-auth-none-bg-focus: var(--color-white);
+  --button-gradient-auth-none-color: var(--color-blue);
+  --button-gradient-auth-none-color-active: var(--color-blue);
+  --button-gradient-auth-none-color-focus: var(--color-blue);
+  --button-gradient-auth-none-color-hover: var(--color-blue);
+  --button-gradient-auth-none-outline-focus: var(--color-blue);
+  --button-gradient-auth-none-border: var(--color-gray-600);
+  --button-gradient-auth-none-border-hover: var(--color-gray-500);
+  --button-gradient-auth-none-border-active: var(--color-white);
+
+  --button-gradient-auth-none-border-mobile: var(--color-gray-400);
+  --button-gradient-auth-none-bg-mobile: var(--color-white);
+
+  --btn-try-before-hover: var(--color-gray-200);
+
+  --border-radius: 7px;
+}
+
+:global {
+  :root.dark-theme {
+
+    --button-primary-bg: var(--color-white);
+    --button-primary-bg-active: var(--color-gray-300);
+    --button-primary-svg: var(--color-blue);
+    --button-primary-svg-hover: var(--color-white);
+    --button-primary-svg-active: var(--color-blue);
+    --button-primary-outline: var(--color-white);
+    --button-primary-active: var(--color-blue);
+    --button-primary-color: var(--color-blue);
+    --button-primary-border-color: var(--color-white);
+    --button-primary-border-color-active: var(--color-white);
+    --button-primary-border-color-focus: var(--color-blue-200);
+    --button-primary-color-hover: var(--color-white);
+    --button-primary-border-color-hover: var(--color-white);
+
+    --button-secondary-bg: var(--color-transparent);
+    --button-secondary-svg: var(--color-white);
+    --button-secondary-svg-hover: var(--color-blue);
+    --button-secondary-svg-active: var(--color-white);
+    --button-secondary-color: var(--color-white);
+    --button-secondary-border-color: var(--color-white);
+    --button-secondary-color-hover: var(--color-blue);
+    --button-secondary-border-color-hover: var(--color-white);
+    --button-secondary-bg-hover: var(--color-white);
+    --button-secondary-outline: var(--color-white);
+    --button-secondary-border-focus: var(--color-blue);
+
+    --button-collection-color: var(--color-white);
+    --button-collection-svg: var(--color-white);
+    --button-collection-border-color: var(--color-blue);
+
+    --back-cancel-border: var(--color-gray-700);
+    --back-cancel-bg: var(--color-blue-200);
+    --back-cancel-color: var(--color-white);
+    --back-cancel-outline-focus: var(--color-white);
+
+    --button-back-border: var(--color-blue-200);
+    --button-back-bg: var(--color-blue-200);
+    --button-back-color: var(--color-white);
+    --button-back-svg: var(--color-white);
+
+    --button-submit-bg-footer: var(--color-gray-200);
+    --button-submit-bg-footer-hover: var(--color-white);
+    --button-submit-color-footer-hover: var(--color-white);
+
+    --edit-bg: var(--color-blue);
+    --edit-color: var(--color-white);
+    --edit-svg: var(--color-white);
+    --edit-border-color: var(--color-blue);
+    --edit-color-hover: var(--color-white);
+    --edit-border-color-hover: var(--color-white);
+
+    --button-gradient-auth-none-bg: var(--color-gray-200);
+    --button-gradient-auth-none-bg-active: var(--color-blue-300);
+    --button-gradient-auth-none-bg-hover: var(--color-blue-200);
+    --button-gradient-auth-none-bg-focus: var(--color-blue-200);
+    --button-gradient-auth-none-color: var(--color-blue);
+    --button-gradient-auth-none-color-active: var(--color-white);
+    --button-gradient-auth-none-color-focus: var(--color-white);
+    --button-gradient-auth-none-color-hover: var(--color-white);
+    --button-gradient-auth-none-outline: var(--color-white);
+    --button-gradient-auth-none-outline-focus: var(--color-white);
+    --button-gradient-auth-none-border-active: var(--color-white);
+    --button-gradient-auth-none-border-hover: var(--color-gray-500);
+
+    --button-gradient-color: var(--color-white);
+    --button-gradient-color-hover: var(--color-blue);
+    --button-gradient-outline-focus: var(--color-white);
+    --button-gradient-hover: var(--color-blue-200);
+    --button-gradient-border-focus: var(--color-blue-200);
+    --button-gradient-border-active: var(--color-red);
+
+    --btn-gradient-none-color: var(--color-white);
+    --btn-gradient-none-outline: var(--color-white);
+    --btn-gradient-none-border: var(--color-pink-200);
+    --btn-gradient-none-bg: var(--color-transparent);
+
+
+    --btn-gradient-none-bg-active: var(--color-gradient);
+    --btn-gradient-none-bg-text-active: var(--color-gradient);
+
+
+    --btn-gradient-none-before: var(--color-transparent);
+    --btn-gradient-none-before-active: var(--color-white);
+    --btn-gradient-none-after-active: var(--color-gradient-type-2);
+    --color-btn-gradient-auth-none: var(--color-blue);
+
+    --btn-gradient-border: var(--color-white);
+    --btn-gradient-outline: var(--color-blue);
+    --btn-gradient-before: var(--color-blue-200);
+
+    --button-terms-color: var(--color-white);
+    --button-terms-bg: var(--color-transparent);
+    --button-terms-border: var(--color-white);
+    --button-terms-svg: var(--color-white);
+
+    --popup_primary-bg: var(--color-blue-200);
+    --popup_primary-border: var(--color-blue-200);
+    --popup_primary-color: var(--color-white);
+    --popup_primary-svg: var(--color-white);
+    --popup_primary-color-hover: var(--color-blue-200);
+    --popup_primary-svg-hover: var(--color-blue-200);
+    --popup_primary-bg-hover: var(--color-white);
+
+    --popup_secondary-bg: var(--color-white);
+    --popup_secondary-bg-hover: var(--color-blue-200);
+    --popup_secondary-border: var(--color-blue-200);
+    --popup_secondary-color: var(--color-blue-200);
+    --popup_secondary-color-hover: var(--color-white);
+    --popup_secondary-svg-hover: var(--color-white);
+
+    --btn-try-before: var(--color-blue-200);
+    --btn-try-outline: var(--color-blue-200);
+    --btn-try-border: var(--color-white);
+  }
+}

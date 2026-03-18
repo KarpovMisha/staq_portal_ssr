@@ -1,0 +1,290 @@
+.formCheckbox {
+  /* default color variables (can be overridden by .application) */
+  --radio-checked-color: #18181b;
+  --check-bg-primary: #3f3f45;
+  --check-border-primary: #52525a;
+  --radio-checked-bg: #fff;
+
+  input {
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    appearance: auto;
+    border: initial;
+    background-color: initial;
+    cursor: default;
+    transform: translateY(-50%);
+  }
+
+  label {
+    display: block;
+    padding-left: 40px;
+    position: relative;
+    color: var(--text-color-primary);
+    font-family: var(--font-familly-grotesk);
+    line-height: 24px;
+    cursor: pointer;
+
+    &:before {
+      content: '';
+      width: 16px;
+      height: 16px;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      border: 1px solid var(--check-border-primary);
+      border-radius: 4px;
+      background-repeat: no-repeat;
+      background-color: var(--check-bg-primary);
+      transform: translateY(-50%);
+    }
+
+    &:after {
+      left: 0;
+    }
+  }
+
+  input:checked + label:after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    top: 50%;
+    left: 3px;
+    background-color: var(--radio-checked-color);
+    transform: translateY(-50%);
+    mask: url('../../icons/check.svg') no-repeat center / contain;
+    -webkit-mask: url('../../icons/check.svg') no-repeat center / contain;
+  }
+
+  /* when checked, make the square background white (like .application) */
+  input:checked + label:before {
+    border: none;
+    background-color: var(--radio-checked-bg);
+  }
+
+  // &.toggle {
+  //   position: relative;
+  //   display: flex;
+  //   align-items: center;
+
+  //   // прячем нативный input, но оставляем доступность (через label клик)
+  //   input {
+  //     width: 1px;
+  //     height: 1px;
+  //     margin: 0;
+  //     position: absolute;
+  //     opacity: 0;
+  //     pointer-events: none;
+  //   }
+
+  //   // ВАЖНО: полностью переопределяем базовый label
+  //   label {
+  //     display: inline-block;
+  //     width: 56px;
+  //     height: 28px;
+  //     // сбрасываем то, что тянется из базового чекбокса
+  //     padding-left: 0 !important;
+
+  //     position: relative; // чтобы before/after позиционировались от label
+  //     cursor: pointer;
+
+  //     // фон свитча (pill)
+  //     &:before {
+  //       content: '' !important;
+
+  //       width: 56px !important;
+  //       height: 28px !important;
+  //       position: absolute !important;
+  //       inset: 0 !important;
+
+  //       border: none !important;
+  //       border-radius: 999px !important;
+
+  //       background-color: #2a2a2a !important; // OFF
+  //       transition: background-color 0.2s ease;
+  //     }
+
+  //     // круг (thumb)
+  //     &:after {
+  //       content: '' !important;
+
+  //       width: 20px !important;
+  //       height: 20px !important;
+  //       position: absolute !important;
+
+  //       top: 4px !important;
+  //       left: 4px !important;
+
+  //       border-radius: 50% !important;
+  //       background-color: #000 !important; // чёрная точка
+  //       transition: transform 0.2s ease;
+  //     }
+  //   }
+
+  //   // ВАЖНО: у тебя есть правило input:checked + label:after с mask "галочки".
+  //   // Мы его перебиваем и возвращаем thumb.
+  //   input:checked + label:after {
+  //     background-color: #000 !important;
+  //     mask: none !important;
+  //     -webkit-mask: none !important;
+  //   }
+
+  //   // checked: зелёный фон + смещение круга вправо
+  //   input:checked + label:before {
+  //     background-color: #22c55e !important;
+  //   }
+
+  //   input:checked + label:after {
+  //     transform: translateX(28px) !important; // 56 - 20 - 8 = 28
+  //   }
+
+  //   // optional: disabled
+  //   input:disabled + label {
+  //     cursor: not-allowed;
+  //     opacity: 0.5;
+  //   }
+  // }
+
+  //custom styles for a permission form
+  // &.permissionForm {
+  //   display: flex;
+  //   flex-direction: row-reverse;
+  //   justify-content: space-between;
+  //   position: relative;
+
+  //   input {
+  //     position: relative;
+  //   }
+
+  //   label {
+  //     width: 100%;
+  //     padding-left: 0;
+
+  //     &:after,
+  //     &:before {
+  //       right: -24px;
+  //       left: auto;
+  //     }
+  //   }
+  // }
+
+  //custom styles for a crate app form
+  // &.createAppForm {
+  //   input {
+  //     left: 0;
+  //   }
+
+  //   label {
+  //     margin-top: -15px;
+  //     padding-bottom: 20px;
+  //     text-align: left;
+  //   }
+  // }
+
+  //redesing
+  &.application {
+    --radio-checked-color: #fff;
+    --radio-bg: #efeff1;
+    // --radio-bg: linear-gradient(0deg, #efeff1, #efeff1);
+    --radio-border: #a9a9af;
+    --radio-checked-bg: #18181b;
+    width: 100%;
+
+    position: relative;
+
+    input {
+      box-sizing: border-box;
+      position: absolute;
+      top: 9px;
+      right: 11px;
+      appearance: none;
+      -webkit-appearance: none;
+      border: initial;
+      background-color: initial;
+      cursor: default;
+      opacity: 0;
+    }
+
+    label {
+      display: block;
+      margin: 0;
+      padding: 8px;
+      position: relative;
+      font-size: 14px;
+      cursor: pointer;
+
+      &::first-letter {
+        text-transform: uppercase;
+      }
+
+      &:before {
+        content: '';
+        inline-size: 1.6rem;
+        block-size: 1.6rem;
+        position: absolute;
+        top: 50%;
+        right: 8px;
+        left: inherit;
+        border: 1px solid var(--radio-border);
+        border-radius: 4px;
+        background-repeat: no-repeat;
+        background-color: var(--radio-bg);
+        transform: translateY(-50%);
+        transition: background-color 0.2s ease;
+      }
+    }
+
+    input:checked + label::before {
+      border: none;
+    }
+
+    input:checked + label::before {
+      // background-color: var(--radio-checked-bg);
+      background-color: #fff;
+    }
+
+    input[type='checkbox']:disabled + label::before {
+      // checkbox bg
+      background-color: #c4c4c4;
+    }
+
+    input[type='checkbox']:disabled + label::after {
+      //checkbox tick
+      background-color: #000;
+    }
+
+    input:checked + label::after {
+      content: '';
+      inline-size: 0.9rem;
+      block-size: 0.9rem;
+      position: absolute;
+      top: 50%;
+      right: 11px;
+      left: inherit;
+      background: inherit;
+      background-color: var(--text-color-primary-reverse);
+      transform: translateY(-50%);
+      mask: url('../../icons/check.svg') no-repeat center / contain;
+      -webkit-mask: url('../../icons/check.svg') no-repeat center / contain;
+    }
+  }
+}
+
+// :global .dark-theme :local {
+//   .formCheckbox {
+//     label {
+//       color: #fff;
+
+//       &:before {
+//         border-color: #52525a;
+//         background-color: #4b4d5b;
+//       }
+//     }
+
+//     &.application {
+//       --radio-checked-color: #000;
+//     }
+//   }
+// }

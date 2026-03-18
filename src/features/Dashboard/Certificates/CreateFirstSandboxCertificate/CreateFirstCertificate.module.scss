@@ -1,0 +1,62 @@
+.first_certificate {
+  &__header {
+    padding-block-start: 56px;
+    padding-block-end: 8px;
+    color: var(--text-color-primary);
+    font-family: var(--font-familly-whyte-medium);
+    font-size: 28px;
+    letter-spacing: -1px;
+  }
+
+  &__desc {
+    padding-block-end: 32px;
+    color: var(--text-color-secondary);
+  }
+
+  &__banner {
+    display: flex;
+    gap: 0.8rem;
+    flex-direction: column;
+    padding: 4.2rem;
+    border: 1px solid var(--border-primary);
+    border-radius: 8px;
+    background-color: var(--bg-secondary);
+    text-align: center;
+  }
+
+  &__icon {
+    svg {
+      width: 34px;
+      height: 34px;
+      path {
+        fill: var(--text-color-primary);
+      }
+    }
+  }
+
+  &__title {
+    color: var(--text-color-primary);
+    font-family: var(--font-familly-whyte-medium);
+    font-size: 24px;
+    letter-spacing: -1px;
+  }
+
+  &__description {
+    max-inline-size: 42rem;
+    margin: 0 auto;
+    color: var(--text-color-secondary);
+    font-family: var(--font-familly-grotesk);
+    font-size: 16px;
+  }
+
+  &__button {
+    button {
+      padding-inline: 1.6rem;
+      padding-block: 0.8rem;
+      color: #fafafa;
+      font-family: var(--font-familly-whyte-medium);
+      font-size: 16px;
+      letter-spacing: -0.3px;
+    }
+  }
+}

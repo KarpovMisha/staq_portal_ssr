@@ -1,0 +1,244 @@
+.primary_select {
+  display: block;
+  width: 100%;
+  text-align: left;
+  position: relative;
+  z-index: 2;
+
+  // .formSelect__label {
+  //   font-size: var(--font-size-xs);
+  //   line-height: 22px;
+  //   letter-spacing: 0.2em;
+  //   text-transform: uppercase;
+  //   color: #787a84;
+  //   padding-bottom: 0;
+  //   font-weight: 400;
+  // }
+
+  // .formSelect__error {
+  //   text-align: left;
+  //   position: absolute;
+  //   left: 0;
+  //   top: 106%;
+  //   color: var(--project-primary-color);
+  //   font-size: var(--font-size-s);
+  //   line-height: 16px;
+  // }
+}
+
+.primary_select .react-select-internal {
+//   &__value-container {
+//     padding: 6px 17px 7px !important;
+//   }
+
+  &__control {
+    border: 1px solid var(--border-primary) !important;
+    border-radius: 4px !important;
+    background: var(--bg-primary);
+    max-height: 36px !important;
+    min-height: 36px !important;
+  }
+
+  &__menu {
+    border: 1px solid var(--border-primary);
+    background: var(--bg-primary);
+  }
+
+  &__single-value{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-color-primary) !important;
+  }
+
+
+
+  &__option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    &--is-selected {
+      color: var(--text-color-primary) !important;
+    }
+
+    &--is-focused {
+      background-color: var(--bg-secondary) !important;
+    }
+    &:hover {
+      background-color: var(--bg-secondary) !important;
+    }
+  }
+
+  //up/down arrow
+  &__indicator {
+    svg {
+      path {
+        fill: var(--text-color-primary);
+      }
+    }
+  }
+}
+
+.secondary_select {
+  display: block;
+  width: 100%;
+  text-align: left;
+  position: relative;
+
+  .formSelect__label {
+    font-size: var(--font-size-xs);
+    text-transform: uppercase;
+    color: var(--text-color-primary);
+    padding-bottom: 0;
+    font-weight: 400;
+  }
+
+  .formSelect__error {
+    text-align: left;
+    position: absolute;
+    left: 0;
+    top: 106%;
+    color: var(--project-primary-color);
+    font-size: var(--font-size-xs);
+    line-height: 8px;
+  }
+}
+
+//e.g Contact form
+.secondary_select .react-select-internal {
+  &__control {
+    border: 1px solid var(--form-border) !important;
+    min-height: 42px !important;
+  }
+
+  &__single-value {
+    color: var(--text-color-primary) !important;
+  }
+
+  &__value-container {
+    padding: 5px 17px !important;
+  }
+
+  &__placeholder {
+    color: var(--text-color-primary) !important;
+  }
+
+  &__input {
+    color: var(--text-color-primary) !important;
+  }
+
+  &__dropdown-indicator {
+    svg {
+      path {
+        fill: var(--text-color-primary);
+      }
+    }
+  }
+
+  &__menu {
+    // background: var(--form-input-bg) !important;
+  }
+
+  &__option {
+    color: var(--text-color-primary);
+
+    &--is-focused {
+      background-color: var(--link-primary-hover) !important;
+    }
+    &:hover {
+      background-color: var(--link-primary-hover) !important;
+    }
+  }
+}
+
+.react-select-internal,
+.react-select-default {
+  &__control {
+    border-radius: 8px !important;
+
+    &--is-focused {
+      border: 1px solid #e9e9eb !important;
+      box-shadow: none !important;
+    }
+
+    &--menu-is-open {
+      .react-select-internal__indicator,
+      .react-select-default__indicator {
+        svg {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+
+  &__single-value,
+  &__placeholder {
+    color: #1e2132;
+    font-size: var(--font-size-m);
+    line-height: 24px;
+  }
+
+  &__value-container {
+    input {
+      position: relative;
+      top: 2px;
+      font-size: var(--font-size-m) !important;
+      line-height: 24px;
+      color: var(--text-color-primary) !important;
+
+      &:-webkit-autofill {
+        // -webkit-box-shadow: 0 0 0px 1000px var(--form-input-bg) inset !important;
+        -webkit-text-fill-color: var(--text-color-primary) !important;
+      }
+    }
+  }
+
+  &__indicator {
+    padding-right: 17px !important;
+
+    svg {
+      fill: #1e2132;
+    }
+  }
+
+  &__indicator-separator {
+    display: none;
+  }
+
+  &__menu {
+    margin-top: 4px !important;
+  }
+
+  &__option {
+    margin-bottom: 5px;
+    // color: #1e2132 !important;
+    padding: 8px 12px 6px !important;
+    font-size: var(--font-size-m) !important;
+    line-height: 24px !important;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &:hover {
+      background-color: #f0f0f0 !important;
+    }
+
+    &--is-focused {
+      background-color: #fff !important;
+    }
+
+    &--is-selected {
+      background-color: var(--link-primary-hover) !important;
+      color: #000 !important;
+    }
+  }
+}
+
+
+// .dark-theme{
+
+//   .formSelect__label {
+//     color: #A5A6AD;
+//   }
+// }

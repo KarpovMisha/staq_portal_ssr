@@ -1,0 +1,30 @@
+.backdrop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    border: 1px solid var(--border-primary);
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(6px);
+  }
+
+   &__body {
+    width: auto;
+    max-inline-size: 104rem;
+    border-radius: 1.6rem;
+    background: var(--bg-primary);
+  }
+}

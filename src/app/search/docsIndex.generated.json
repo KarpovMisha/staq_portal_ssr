@@ -1,0 +1,92 @@
+[
+  {
+    "route": "api/api",
+    "sectionId": "api",
+    "sectionTitle": "Api",
+    "text": "Api Api uses Keycloak."
+  },
+  {
+    "route": "api/api",
+    "sectionId": "enter-verification-api",
+    "sectionTitle": "Enter verification api",
+    "text": "Enter verification api If enabled, the user must enter a verification api."
+  },
+  {
+    "route": "api/api",
+    "sectionId": "redirect-to-docs",
+    "sectionTitle": "Redirect to Docs",
+    "text": "Redirect to Docs After success, redirect to the Docs."
+  },
+  {
+    "route": "api/api",
+    "sectionId": "test",
+    "sectionTitle": "test",
+    "text": "test the user must enter"
+  },
+  {
+    "route": "get-started/create-application",
+    "sectionId": "create-application",
+    "sectionTitle": "Create application",
+    "text": "Create application To start building with Staq, you’ll first create an application in your developer dashboard. Your app stores the credentials and settings you’ll use to connect securely to the Staq API."
+  },
+  {
+    "route": "get-started/create-application",
+    "sectionId": "create-staq-account",
+    "sectionTitle": "Create Staq account",
+    "text": "Create Staq account To access the Staq platform you need to create an account and access the developer dashboard. The dashboard is where you can manage your preferences and applications."
+  },
+  {
+    "route": "get-started/create-application",
+    "sectionId": "create-new-application",
+    "sectionTitle": "Create New Application",
+    "text": "Create New Application Once you have access to your dashboard, you will need to create your first application. General Settings"
+  },
+  {
+    "route": "get-started/create-application",
+    "sectionId": "name-and-description",
+    "sectionTitle": "Name and description",
+    "text": "Name and description Provide a unique name and a short description for your application. This works similarly to naming a GitHub repository, the name helps you identify your app later, and the description gives context about its purpose or functionality."
+  },
+  {
+    "route": "get-started/create-application",
+    "sectionId": "configuration",
+    "sectionTitle": "Configuration",
+    "text": "Configuration Next, select whether your application is Business to Business (B2B) or Business to Consumer (B2C). This selection cannot be changed once the application is created."
+  },
+  {
+    "route": "get-started/create-application",
+    "sectionId": "business-to-business",
+    "sectionTitle": "Business to business",
+    "text": "Business to business B2B apps connect with business entities only — they do not support end user interactions."
+  },
+  {
+    "route": "get-started/create-application",
+    "sectionId": "business-to-consumer",
+    "sectionTitle": "Business to consumer",
+    "text": "Business to consumer B2C apps are intended for individual consumers and include APIs for managing personal user data and sessions. The chosen configuration determines which APIs and features your app can access. Choose carefully based on your target users and integration requirements. Configuration Settings"
+  },
+  {
+    "route": "get-started/create-application",
+    "sectionId": "required-apis",
+    "sectionTitle": "Required APIs",
+    "text": "Required APIs Choose the APIs your application will depend on. Each API provides specific functionality or data access. Select only those required for your use case, additional APIs can typically be added later if needed. i Select only the APIs your application requires. Doing so keeps your integration secure, efficient, and easier to maintain. You can modify your API selections at any time after the application is created. Configuration API settings When you’re happy with your configuration, click Create app to finish setup. Your new app will appear in your dashboard, where you can view your public and secret keys and manage its settings anytime from the Settings tab. App Information in dashboard"
+  },
+  {
+    "route": "get-started/create-application",
+    "sectionId": "next-steps",
+    "sectionTitle": "Next steps",
+    "text": "Next steps Your app credentials are now ready to be linked with a secure certificate. Continue to to create and upload your signed client certificate."
+  },
+  {
+    "route": "get-started/generate-csr-certificate",
+    "sectionId": "generate-csr-certificate",
+    "sectionTitle": "Generate CSR certificate",
+    "text": "Generate CSR certificate Follow these steps to create and install a test certificate. Keep your private key secure, only the CSR and certificate are shared with Staq."
+  },
+  {
+    "route": "get-started/generate-csr-certificate",
+    "sectionId": "generate-a-private-key",
+    "sectionTitle": "Generate a private key",
+    "text": "Generate a private key Open your terminal and create a new RSA private key. This file stays on your system keep it safe and never share it with anyone."
+  }
+]

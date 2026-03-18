@@ -1,0 +1,55 @@
+.popular_guides {
+  &__header {
+    padding-block-end: 3.2rem;
+    color: var(--text-color-primary);
+  }
+
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    // align-items: stretch;
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    min-block-size: 260px;
+    padding: 1.6rem;
+    border: 1px solid var(--border-primary);
+    border-radius: 16px;
+    background-color: var(--bg-secondary);
+    font-family: var(--font-familly-whyte-medium);
+  }
+
+  &__title {
+    padding-block-start: 18px;
+    color: var(--text-color-primary);
+    letter-spacing: -0.4px;
+  }
+
+  &__description {
+    padding-block-start: 8px;
+    color: #717179;
+    color: var(--text-color-secondary);
+    font-weight: 500;
+    font-family: var(--font-familly-grotesk);
+    font-size: 14px;
+  }
+
+  &__links {
+    display: flex;
+    gap: 1.2rem;
+    margin-top: auto;
+    padding-block-start: 2.6rem;
+    color: var(--text-color-primary);
+    font-size: 12px;
+
+    a {
+      padding-inline: 12px;
+      padding-block: 2px;
+      border-radius: 4px;
+      background: var(--bg-primary);
+    }
+  }
+}

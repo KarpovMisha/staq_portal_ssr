@@ -1,0 +1,15 @@
+.dashboard_intro {
+  h1 {
+    color: var(--text-color-primary);
+    font-size: 40px;
+  }
+
+  &__description {
+    width: 100%;
+    max-width: 480px;
+    padding-block-start: 18px;
+    color: var(--text-color-secondary);
+    font-family: var(--font-familly-grotesk);
+    font-size: 16px;
+  }
+}

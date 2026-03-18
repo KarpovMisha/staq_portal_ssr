@@ -1,0 +1,35 @@
+import { Tabs, Tab } from '../Tabs';
+
+# Api
+
+Api uses Keycloak.
+
+## Enter verification api
+
+If enabled, the user must enter a verification api.
+
+## Redirect to Docs
+
+After success, redirect to the Docs.
+
+## test
+
+the user must enter
+
+
+<Tabs>
+  <Tab label="REST">
+    ```http
+    POST /auth/verify
+    Content-Type: application/json
+    ```
+  </Tab>
+
+  <Tab label="cURL">
+    ```bash
+    curl -X POST https://api.example.com/auth/verify \
+      -H "Content-Type: application/json" \
+      -d '{"code":"123456"}'
+    ```
+  </Tab>
+</Tabs>

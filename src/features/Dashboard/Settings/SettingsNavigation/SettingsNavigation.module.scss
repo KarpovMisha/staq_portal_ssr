@@ -1,0 +1,58 @@
+.settings {
+  h1 {
+    color: var(--text-color-primary);
+    font-size: 32px;
+  }
+
+  &__tabs {
+    display: flex;
+    gap: 32px;
+    align-items: flex-end;
+    padding-top: 8px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  &__tab {
+    display: inline-block;
+    padding: 8px 0 10px;
+    position: relative;
+    color: #6b7280;
+    font-family: var(--font-familly-whyte-medium);
+    font-size: 14px;
+    line-height: 1.2;
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    span {
+      pointer-events: none;
+    }
+
+    &:hover {
+      color: var(--text-color-primary);
+    }
+
+    &--active {
+      color: var(--text-color-primary);
+
+      &::after {
+        content: '';
+        height: 2px;
+        position: absolute;
+        right: 0;
+        bottom: -1px;
+        left: 0;
+        background-color: var(--text-color-primary);
+      }
+    }
+
+    &:focus-visible {
+      border-radius: 4px;
+      outline: 2px solid #94a3b8;
+      outline-offset: 2px;
+    }
+  }
+}

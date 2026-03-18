@@ -1,0 +1,49 @@
+.dashboard_setup {
+  --padding: 2.4rem;
+  padding: 6px;
+  background-color: var(--bg-secondary);
+  border-radius: 1.6rem;
+
+  &__back {
+    inline-size: 6rem;
+    block-size: 2.8rem;
+    text-align: center;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    font-family: var(--font-familly-whyte-medium);
+    cursor: pointer;
+    color: var(--text-color-primary);
+
+    svg {
+      margin-inline-start: 0.5rem;
+      transform: rotate(180deg);
+      path {
+        fill: var(--text-color-primary);
+      }
+    }
+
+    span {
+      margin-inline-start: 0.5rem;
+      font-size: 14px;
+    }
+  }
+
+  &__settings {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &__steps {
+    border: 1px solid var(--border-primary);
+    border-radius: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-primary);
+  }
+
+  &__header {
+    padding: var(--padding);
+    border-bottom: 1px solid var(--border-primary);
+    color: var(--text-color-primary);
+  }
+}

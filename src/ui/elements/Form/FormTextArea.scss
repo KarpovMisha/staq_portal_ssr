@@ -1,0 +1,51 @@
+.formTextArea {
+  position: relative;
+
+  textarea {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-primary);
+    border-radius: 4px;
+    font-size: 16px;
+    resize: none;
+    width: 100%;
+    height: 83px;
+    padding: 12px;
+    letter-spacing: -0.4px;
+    color: var(--text-color-primary);
+
+    &:-webkit-resizer {
+      display: none;
+    }
+
+    &:focus{
+      border: 1px solid var(--border-primary) !important;
+      box-shadow: none;
+      outline: none;
+    }
+
+    &::placeholder{
+      color: var(--text-color-tertiary);
+    }
+  }
+
+  &__label {
+    display: block;
+    font-weight: normal;
+    letter-spacing: 1px;
+    color: var(--text-color-primary);
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0;
+
+    strong {
+      padding-inline-start: 2px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-color-tertiary);
+    }
+  }
+
+  &__box {
+    position: relative;
+  }
+}

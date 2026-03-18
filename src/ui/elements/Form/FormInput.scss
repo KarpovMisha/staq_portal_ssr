@@ -1,0 +1,121 @@
+// @use 'src/styles/Breakpoint.module.scss' as media;
+
+.primary_input {
+  position: relative;
+
+  input {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding-inline: 12px;
+    padding-block: 5px;
+    border: 1px solid var(--border-primary);
+    border-radius: 4px;
+    background: var(--bg-primary);
+    color: var(--text-color-primary);
+    font-size: 16px;
+    font-family: var(--font-familly-whyte);
+    line-height: 24px;
+
+    @include media.breakpoint('phone-max') {
+      max-width: inherit !important;
+    }
+
+    &:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0px 1000px var(--form-input-bg) inset !important;
+      -webkit-text-fill-color: var(--text-color-primary) !important;
+    }
+
+    &:focus {
+      // border: 1px solid var(--color-blue-01);
+      box-shadow: none;
+      outline: none;
+    }
+
+    &:disabled {
+      opacity: 1;
+      -webkit-text-fill-color: #000;
+    }
+  }
+
+  .formInput__label {
+    display: block;
+    color: var(--text-color-primary);
+    font-weight: normal;
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+
+  .formInput__box {
+    position: relative;
+  }
+
+  .formInput__error {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    color: var(--project-primary-color);
+    font-size: 10px;
+    line-height: 14px;
+    text-align: left;
+  }
+}
+
+// .secondary_input {
+//   position: relative;
+
+//   input {
+//     display: block;
+//     width: 100%;
+//     margin: 0;
+//     padding-inline: 12px;
+//     padding-block: 8px;
+//     border: 1px solid var(--border-primary) !important;
+//     border-radius: 4px;
+//     background: var(--form-input-bg) !important;
+//     color: var(--text-color-secondary);
+//     font-size: 16px;
+
+//     @include media.breakpoint('phone-max') {
+//       max-width: inherit !important;
+//     }
+
+//     &:-webkit-autofill {
+//       -webkit-box-shadow: 0 0 0px 1000px var(--form-input-bg) inset !important;
+//       -webkit-text-fill-color: var(--text-color-secondary) !important;
+//     }
+
+//     &:focus {
+//       // border: 1px solid var(--color-blue-01);
+//       box-shadow: none;
+//       outline: none;
+//     }
+
+//     &:disabled {
+//       opacity: 1;
+//       -webkit-text-fill-color: #000;
+//     }
+//   }
+
+//   .formInput__label {
+//     display: block;
+//     color: var(--text-color-primary);
+//     font-weight: normal;
+//     font-size: 10px;
+//     letter-spacing: 1px;
+//   }
+
+//   .formInput__box {
+//     position: relative;
+//   }
+
+//   .formInput__error {
+//     position: absolute;
+//     top: 100%;
+//     left: 0;
+//     color: var(--project-primary-color);
+//     font-size: 10px;
+//     line-height: 14px;
+//     text-align: left;
+//   }
+// }

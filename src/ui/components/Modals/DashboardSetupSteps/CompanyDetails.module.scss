@@ -1,0 +1,126 @@
+.company_details {
+  &__result {
+    --active-api: #000;
+    --disabled-api: #717179;
+
+    padding-inline: 6.6rem;
+    padding-block: 8.8rem;
+    background: var(--_details-bg);
+  }
+
+  &__details {
+    --_details-bg: var(--bg-secondary);
+    border: 1px solid var(--border-primary);
+    border-radius: 1.6rem;
+    background: var(--_details-bg);
+
+    &.companyApis,
+    &.companyTypes {
+      --_details-bg: var(--bg-primary);
+    }
+  }
+
+  &__top {
+    min-block-size: 11.2rem;
+    padding: var(--padding);
+    border-bottom: 1px solid var(--border-primary);
+  }
+
+  &__name {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    color: var(--text-color-primary);
+  }
+
+  &__email {
+    width: fit-content;
+    margin-block-start: 6px;
+    padding: 3px 6px;
+    border: 1px solid var(--border-primary);
+    border-radius: 12px;
+    color: var(--text-color-tertiary);
+  }
+
+  &__avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: uppercase;
+    user-select: none;
+  }
+
+  &__products {
+    min-block-size: 28.4rem;
+    padding: var(--padding);
+    border-bottom: 1px solid var(--border-primary);
+
+    p {
+      color: var(--text-color-primary);
+    }
+
+    ul {
+      min-block-size: 21.6rem;
+      padding: 1rem;
+      border: 1px solid var(--border-primary);
+      border-radius: 12px;
+      font-family: var(--font-familly-whyte-medium);
+      font-size: 12px;
+
+      li {
+        padding-block: 0.4rem;
+      }
+    }
+  }
+
+  &__api {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    color: var(--disabled-api);
+
+    > svg:first-of-type {
+      path {
+        fill: var(--disabled-api);
+      }
+    }
+
+    &--active {
+      color: var(--text-color-primary);
+      > svg:first-of-type {
+        path {
+          fill: var(--text-color-primary);
+        }
+      }
+    }
+
+    span {
+      margin-left: auto;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    gap: 1rem;
+    min-block-size: 8rem;
+    padding: var(--padding);
+
+    div {
+      padding-inline: 12px;
+      padding-block: 6px;
+      border-radius: 999px;
+      background: #3f3f45;
+      color: #fff;
+    }
+    svg {
+      margin-left: auto;
+    }
+  }
+}

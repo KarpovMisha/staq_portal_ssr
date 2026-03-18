@@ -1,0 +1,51 @@
+.company_name {
+  &__instruction {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: var(--padding);
+    height: 100%;
+  }
+
+  &__title {
+    color: var(--text-color-primary);
+    font-size: 2.4rem;
+    font-family: var(--font-familly-whyte-medium);
+  }
+
+  &__description {
+    font-size: 16px;
+    font-family: var(--font-familly-grotesk);
+    line-height: 24px;
+    color: var(--text-color-secondary);
+  }
+
+  &__input {
+    label {
+      font-family: var(--font-familly-whyte-medium) !important;
+      text-transform: initial !important;
+      font-size: 14px !important;
+
+      span {
+        color: #a9a9af;
+      }
+    }
+    input {
+      background: var(--bg-secondary);
+      width: 100%;
+    }
+  }
+
+  &__btn {
+    text-align: right;
+    margin-top: auto;
+    button {
+      color: #fff;
+      font-size: 16px;
+      letter-spacing: -0.5px;
+      padding-block: 6px;
+      padding-inline: 16px;
+      border-radius: 99999px !important;
+    }
+  }
+}

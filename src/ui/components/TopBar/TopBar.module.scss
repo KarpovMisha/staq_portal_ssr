@@ -1,0 +1,44 @@
+.topBar {
+  --bar-padding: 4px 12px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  border-bottom: 1px solid var(--border-primary);
+
+  &__left {
+    min-width: var(--sidebar-width);
+    max-width: var(--sidebar-width);
+    padding: var(--bar-padding);
+
+    &--isBreadcrumb {
+      border-right: 1px solid var(--border-primary);
+      height: 100%;
+    }
+  }
+
+  &__middle {
+    padding: 4px 24px;
+  }
+
+  &__right {
+    margin-left: auto;
+    padding-inline: 24px;
+    padding-block: 16px;
+  }
+
+  &__close {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+
+    svg {
+      width: 16px;
+      height: 16px;
+      path {
+        fill: var(--text-color-primary);
+      }
+    }
+  }
+}

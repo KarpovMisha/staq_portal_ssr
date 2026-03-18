@@ -1,0 +1,55 @@
+.first_application {
+  padding-inline: 16px;
+
+  &__header {
+    color: var(--text-color-primary);
+    font-size: 32px;
+    line-height: 40px;
+    padding-block-end: 32px;
+  }
+
+  &__banner {
+    display: flex;
+    gap: 0.8rem;
+    flex-direction: column;
+    padding: 82px;
+    border: 1px solid var(--border-primary);
+    border-radius: 16px;
+    background-color: var(--bg-secondary);
+    text-align: center;
+  }
+
+  &__icon {
+    svg {
+      width: 34px;
+      height: 34px;
+      path {
+        fill: var(--text-color-primary);
+      }
+    }
+  }
+
+  &__title {
+    font-family: var(--font-familly-whyte-medium);
+    letter-spacing: -1px;
+    color: var(--text-color-primary);
+  }
+
+  &__description {
+    color: var(--text-color-secondary);
+    font-family: var(--font-familly-grotesk);
+    font-size: 16px;
+  }
+
+  &__button {
+    margin-block-start: 18px;
+    button {
+      padding-inline: 1.6rem;
+      padding-block: 0.8rem;
+
+      font-size: 16px;
+      letter-spacing: -0.3px;
+      color: #fff;
+    }
+  }
+}

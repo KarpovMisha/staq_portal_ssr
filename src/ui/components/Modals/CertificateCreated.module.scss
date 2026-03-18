@@ -1,0 +1,71 @@
+.certificate_created {
+  --container-padding: 2rem;
+
+  &__info {
+    padding: var(--container-padding);
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    margin-block-end: 2rem;
+    border-radius: 50%;
+    background: #000;
+
+    svg {
+      path {
+        fill: #fff;
+      }
+    }
+  }
+
+  &__title {
+    margin-block-end: 2rem;
+    font-family: var(--font-familly-whyte-medium);
+    font-size: 30px;
+    text-align: left;
+    color: var(--text-color-primary);
+  }
+
+  &__description {
+    margin-block-end: 2rem;
+    text-align: left;
+    font-family: var(--font-familly-grotesk);
+    color: var(--text-color-secondary);
+  }
+
+  &__btns {
+    border-top: 1px solid var(--border-primary);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: var(--container-padding);
+
+    button {
+      text-transform: inherit !important;
+      &:nth-of-type(1) {
+        color: var(--text-color-tertiary) !important;
+        background: transparent !important;
+        border: none;
+      }
+      &:nth-of-type(2) {
+        color: #fff;
+      }
+    }
+  }
+}
+
+:global .dark-theme :local {
+  .certificate_created {
+    &__icon {
+      background: #fff;
+      svg {
+        path {
+          fill: #000;
+        }
+      }
+    }
+  }
+}
