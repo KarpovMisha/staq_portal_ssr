@@ -1,4 +1,5 @@
-import { Button } from 'elements/index';
+'use client';
+import { Button } from '@/ui/elements';
 import styles from './Profile.module.scss';
 
 export default function DeleteProfile({ id = '3' }: { id?: string }) {

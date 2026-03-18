@@ -1,8 +1,9 @@
+'use client';
 import { Form } from 'react-final-form';
 
-import { Button } from 'elements/index';
-import EditIcon from 'styles/icon/dashboard/edit.svg?react';
-import { FormInput } from 'elements/Form';
+import { Button } from '@/ui/elements';
+import { FormInput } from '@/ui/elements/Form';
+import EditIcon from '@/ui/icons/edit.svg';
 import styles from './Profile.module.scss';
 
 export default function EditProfilePassword() {

@@ -1,0 +1,65 @@
+//for react-international-phone library
+:root {
+  --react-international-phone-background-color: var(--bg-primary);
+  --react-international-phone-border-color: var(--border-primary);
+  --react-international-phone-text-color: var(--text-color-primary);
+  --react-international-phone-country-selector-background-color-hover: transparent;
+  --react-international-phone-flag-width: 16px;
+  --react-international-phone-flag-height: 16px;
+  --react-international-phone-selected-dropdown-item-background-color: var(--bg-secondary);
+  --react-international-phone-dropdown-item-background-color: var(--bg-primary);
+  --react-international-phone-font-size: 16px;
+}
+
+.react-international-phone-country-selector {
+  z-index: 1;
+}
+.react-international-phone-input {
+  flex: 1 1 auto;
+}
+
+.react-international-phone-country-selector-button {
+  position: relative;
+  padding-right: 28px;
+
+  &::after {
+    content: "";
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    width: 12px;
+    height: 12px;
+    transform: translateY(-50%);
+    background-color: var(--text-color-primary);
+    pointer-events: none;
+
+    mask: url("../../icons/downArrow.svg") no-repeat center / contain;
+    -webkit-mask: url("../../icons/downArrow.svg") no-repeat center / contain;
+  }
+
+  &__button-content {
+    padding-inline: 6px;
+  }
+}
+
+.react-international-phone-country-selector-button[aria-expanded="true"]::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.react-international-phone-country-selector-dropdown {
+  border: 1px solid var(--border-primary);
+  border-radius: 6px;
+
+  &:focus-visible {
+    outline: none !important;
+  }
+  > div {
+    &:focus-visible {
+      outline: none !important;
+    }
+  }
+}
+
+.react-international-phone-country-selector-button__dropdown-arrow {
+  display: none;
+}
