@@ -4,7 +4,8 @@ import EditProfilePassword from './EditProfilePassword';
 import EditProfileEmail from './EditProfileEmail';
 import EditProfilePhone from './EditProfilePhone';
 import DeleteProfile from './DeleteProfile';
-import { AvatarUploader } from '@/ui/components/AvatarUploader/AvatarUploader';
+
+import { AvatarUploader } from '@/ui/components';
 import styles from './Profile.module.scss';
 
 export default function Profile() {

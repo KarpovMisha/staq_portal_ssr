@@ -1,0 +1,45 @@
+.api_group {
+  padding-block-end: 2px;
+
+  &__name {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 4px 8px;
+
+    svg {
+      transform: rotate(-90deg);
+      path {
+        fill: var(--text-color-primary);
+      }
+    }
+
+    &--open {
+      border-radius: 4px;
+      background: var(--bg-secondary);
+      svg {
+        transform: rotate(0);
+      }
+    }
+  }
+
+  &__children {
+    display: none;
+    padding: 4px 8px;
+
+    &--open {
+      display: block;
+      animation: appear 0.2s
+    }
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

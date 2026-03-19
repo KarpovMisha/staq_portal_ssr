@@ -23,7 +23,7 @@ export async function updateAvatar(file: File) {
   return res.json() as Promise<{ avatarUrl: string }>;
 }
 
-export function AvatarUploader() {
+export default function AvatarUploader() {
   const [file, setFile] = React.useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = React.useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = React.useState(false);

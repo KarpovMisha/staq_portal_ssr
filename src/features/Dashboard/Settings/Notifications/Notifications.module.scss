@@ -1,0 +1,66 @@
+.notifications {
+  display: flex;
+  gap: 24px;
+  flex-direction: column;
+  color: var(--text-color-primary);
+
+  h4 {
+    font-size: 24px;
+  }
+
+  &__types {
+    display: flex;
+    gap: 1px;
+    flex-direction: column;
+    border: 1px solid var(--border-primary);
+    border-radius: 4px;
+    background: var(--bg-secondary);
+    overflow: hidden;
+  }
+
+  &__type {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding: 6px;
+    background: var(--bg-primary);
+
+    > div:last-child {
+      margin-left: auto;
+    }
+
+    &--logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--border-primary);
+      border-radius: 4px;
+      background: var(--bg-secondary);
+    }
+  }
+
+  &__billing {
+    &--body,
+    &--header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &--header {
+      border-bottom: 1px solid var(--border-primary);
+      padding-block-end: 12px;
+    }
+
+    &--body {
+      padding-block-start: 12px;
+    }
+
+    &--right {
+      display: flex;
+      gap: 12px;
+    }
+  }
+}

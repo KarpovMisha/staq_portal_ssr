@@ -52,7 +52,7 @@ export default function CreateApplicationForm() {
   // const dispatch = useAppDispatch();
   const router = useRouter();
 
-  function onSubmit(formData) {
+  function onSubmit(formData: any) {
     console.log(formData);
     // dispatch(dashboardActions.setActiveModalDetails({ name: 'app created' }))
   }
@@ -90,7 +90,7 @@ export default function CreateApplicationForm() {
           const activeIteraction = values.iteraction;
           if (
             Array.isArray(values.apis_list) &&
-            values.apis_list.every((p) => typeof p === 'string')
+            values.apis_list.every((p: any) => typeof p === 'string')
           ) {
             activeApis = values.apis_list;
           }

@@ -1,15 +1,14 @@
 import cn from 'classnames';
-import { Link } from 'react-router';
+import Link from 'next/link';
 
-import AddIcon from 'styles/icon/dashboard/add_square.svg?react';
-import ArrowDownIcon from 'styles/icon/icon_check.svg?react';
-import ArrowIcon from 'styles/icon/arrowRight.svg?react';
-import { list } from '../../../redux/reducers/apps';
-import { useAppSelector } from 'hooks/useRedux';
+import AddIcon from '@/ui/icons/add_square.svg';
+import ArrowDownIcon from '@/ui/icons/icon_check.svg';
+import ArrowIcon from '@/ui/icons/arrowRight.svg';
 import styles from './SetupAuthorizedGuide.module.scss';
+import { useApplicationsQuery } from '@/hooks/useApplicationQuery';
 
 export default function SetupApplicationGuide() {
-  const appList = useAppSelector(list) || [];
+  const { data: appList = [] } = useApplicationsQuery();
   return (
     <div
       className={cn(styles.auth_guide__item, {
@@ -43,7 +42,7 @@ export default function SetupApplicationGuide() {
         )}
       </div>
       {!appList.length && (
-        <Link to="/dashboard/apps">
+        <Link href="/dashboard/apps">
           <div className={styles.auth_guide__options}>
             <div className={styles.auth_guide__circle} />
             <h5>Create New Application</h5>

@@ -1,7 +1,7 @@
 import cn from 'classnames';
 
-import ArrowDownIcon from 'styles/icon/icon_check.svg?react';
-import AccountIcon from 'styles/icon/dashboard/account.svg?react';
+import ArrowDownIcon from '@/ui/icons/icon_check.svg';
+import AccountIcon from '@/ui/icons/account.svg';
 import SetupApplicationGuide from './SetupApplicationGuide';
 import SetupSertificateGuide from './SetupSertificateGuide';
 import SetupApiGuide from './SetupApiGuide';

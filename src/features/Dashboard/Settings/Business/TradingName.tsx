@@ -8,7 +8,7 @@ import { Button } from '@/ui/elements';
 
 export default function TradingName() {
 
-  function onSubmit(formData) {
+  function onSubmit(formData: any) {
     console.log('formData', formData);
   }
 

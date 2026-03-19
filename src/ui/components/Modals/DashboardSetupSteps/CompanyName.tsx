@@ -1,5 +1,6 @@
-import { Button } from 'elements/index';
-import { FormInput } from 'elements/Form';
+
+import { Button } from '@/ui/elements';
+import { FormInput } from '@/ui/elements/Form';
 import styles from './CompanyName.module.scss';
 
 type CompanyName = {

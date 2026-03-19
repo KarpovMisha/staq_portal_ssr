@@ -1,8 +1,8 @@
 'use client';
 
 import Switch from 'react-switch';
-import SunIcon from '@/ui/icons/sun.svg?react';
-import MoonIcon from '@/ui/icons/moon.svg?react';
+import SunIcon from '@/ui/icons/sun.svg';
+import MoonIcon from '@/ui/icons/moon.svg';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { selectIsDarkMode, switcherActions, toggleTheme } from '@/store/slices/switcherSlice';
 

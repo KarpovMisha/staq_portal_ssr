@@ -1,10 +1,11 @@
 import cn from 'classnames';
 
 import { apisList } from './data';
-import CheckIcon from 'styles/icon/dashboard/checkmark_circle.svg?react';
-import StaqIcon from 'styles/icon/dashboard/staq_app_logo.svg?react';
+import CheckIcon from '@/ui/icons/checkmark_circle.svg';
+import StaqIcon from '@/ui/icons/staq_app_logo.svg';
+import { generateCompanyLogo } from '@/app/lib/helpers';
 import styles from './CompanyDetails.module.scss';
-import { generateCompanyLogo } from 'utils/helpers';
+
 
 type CompanyFetailsProps = {
   step: string;

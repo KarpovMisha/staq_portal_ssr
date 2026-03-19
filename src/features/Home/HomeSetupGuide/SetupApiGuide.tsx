@@ -1,15 +1,13 @@
 import cn from 'classnames';
-import { Link } from 'react-router';
+import Link from 'next/link';
 
-import ApplicationIcon from 'styles/icon/dashboard/applications.svg?react';
-import ArrowDownIcon from 'styles/icon/icon_check.svg?react';
-import ArrowIcon from 'styles/icon/arrowRight.svg?react';
-import { useAppSelector } from 'hooks/useRedux';
-import { certificatesList } from '../../../redux/reducers/certificates';
+import ApplicationIcon from '@/ui/icons/applications.svg';
+import ArrowIcon from '@/ui/icons/arrowRight.svg';
+import { useCertificatesQuery } from '@/hooks/useCertificatesQuery';
 import styles from './SetupAuthorizedGuide.module.scss';
 
 export default function SetupApiGuide() {
-  const certificates = useAppSelector(certificatesList);
+  const { data: certificates = [] } = useCertificatesQuery();
   return (
     <div
       className={cn(styles.auth_guide__item, {
@@ -35,7 +33,7 @@ export default function SetupApiGuide() {
         </div>
       </div>
       {!!certificates.length && (
-        <Link to="get-started/make-first-api-call">
+        <Link href="get-started/make-first-api-call">
           <div className={styles.auth_guide__options}>
             <div className={styles.auth_guide__circle} />
             <h5>Make first API call</h5>

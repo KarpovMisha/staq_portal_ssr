@@ -1,17 +1,16 @@
 import cn from 'classnames';
-import { Link } from 'react-router';
+import Link from 'next/link';
 
-import CertificateIcon from 'styles/icon/dashboard/certificates.svg?react';
-import ArrowDownIcon from 'styles/icon/icon_check.svg?react';
-import ArrowIcon from 'styles/icon/arrowRight.svg?react';
-import { list } from '../../../redux/reducers/apps';
-import { useAppSelector } from 'hooks/useRedux';
-import { certificatesList } from '../../../redux/reducers/certificates';
+import CertificateIcon from '@/ui/icons/certificates.svg';
+import ArrowDownIcon from '@/ui/icons/icon_check.svg';
+import ArrowIcon from '@/ui/icons/arrowRight.svg';
 import styles from './SetupAuthorizedGuide.module.scss';
+import { useCertificatesQuery } from '@/hooks/useCertificatesQuery';
+import { useApplicationsQuery } from '@/hooks/useApplicationQuery';
 
 export default function SetupSertificateGuide() {
-  const appList = useAppSelector(list) || [];
-  const certificates = useAppSelector(certificatesList);
+  const { data: appList = [] } = useApplicationsQuery();
+  const { data: certificates = [] } = useCertificatesQuery();
 
   return (
     <div
@@ -47,7 +46,7 @@ export default function SetupSertificateGuide() {
         )}
       </div>
       {!!appList.length && !certificates.length && (
-        <Link to="/dashboard/certificates">
+        <Link href="/dashboard/certificates">
           <div className={styles.auth_guide__options}>
             <div className={styles.auth_guide__circle} />
             <span>Create and upload certificate</span>

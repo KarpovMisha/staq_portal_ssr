@@ -1,6 +1,3 @@
-import type { Metadata } from 'next';
-
-import { getMetadataByKey } from '@/app/lib/seo/getMetadataByKey';
 import {
   HomeIntro,
   HomeProductGuides,
@@ -11,7 +8,6 @@ import {
 import { PageContainer } from '@/ui/elements';
 import { ApiGuides } from '@/ui/components';
 
-export const metadata: Metadata = getMetadataByKey('home');
 const Home = () => {
   return (
     <PageContainer>

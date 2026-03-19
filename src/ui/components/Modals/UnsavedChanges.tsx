@@ -1,7 +1,8 @@
-import { Button, ModalBackdrop } from 'elements/index';
-import AlertIcon from 'styles/icon/dashboard/alert-triangle.svg?react';
+import { Button, ModalBackdrop } from '@/ui/elements';
+import AlertIcon from '@/ui/icons/alert-triangle.svg';
 import styles from './UnsavedChanges.module.scss';
-import { callModalCallback } from 'utils/ModalService';
+import { callModalCallback } from '@/ui/utils/ModalService';
+
 
 interface IModal {
   closeModal: (v?: object) => any;

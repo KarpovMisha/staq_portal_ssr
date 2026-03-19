@@ -8,7 +8,7 @@ import { FormInput } from '@/ui/elements/Form';
 import { Button } from '@/ui/elements';
 
 export default function AdressField() {
-  function onSubmit(formData) {
+  function onSubmit(formData: any) {
     console.log('formData', formData);
   }
 

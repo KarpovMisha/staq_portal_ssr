@@ -39,7 +39,7 @@ export default async function RootLayout({
               <div id="root">
                 <ToastContainer
                   hideProgressBar={false}
-                  draggable={false}s
+                  draggable={false}
                   closeButton={false}
                   closeOnClick={false}
                 />

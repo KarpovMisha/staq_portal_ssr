@@ -1,8 +1,9 @@
 import cn from 'classnames';
 
-import { Button } from 'elements/index';
-import { FormCheckbox } from 'elements/Form';
+
 import styles from './CompanyTypes.module.scss';
+import { FormCheckbox } from '@/ui/elements/Form';
+import { Button } from '@/ui/elements';
 
 type CompanyTypesProps = {
   nextStep: () => void;

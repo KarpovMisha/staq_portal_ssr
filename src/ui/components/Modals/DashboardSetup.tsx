@@ -7,6 +7,7 @@ import { useState } from 'react';
 // import CompanyTypes from './DashboardSetupSteps/CompanyTypes';
 // import CompanyApis from './DashboardSetupSteps/CompanyApis';
 import styles from './DashboardSetup.module.scss';
+import { ModalBackdrop } from '@/ui/elements';
 // import ModalBackdrop from 'elements/ModalBackdrop/ModalBackdrop';
 
 export enum SetupStep {

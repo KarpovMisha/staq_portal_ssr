@@ -1,9 +1,9 @@
 import cn from 'classnames';
 
-import { Button } from 'elements/index';
+import { Button } from '@/ui/elements';
+import { FormCheckbox } from '@/ui/elements/Form';
 import { apisList } from './data';
 import styles from './CompanyApis.module.scss';
-import { FormCheckbox } from 'elements/Form';
 
 type CompanyApisProps = {
   nextStep: () => void;

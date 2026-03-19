@@ -4,13 +4,15 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import cn from 'classnames';
 
-import { apisList } from 'components/ApiSidebar/ApiSidebar';
-import SearchIcon from 'styles/icon/search.svg?react';
-import GetIcon from 'styles/icon/dashboard/get.svg?react';
-import PostIcon from 'styles/icon/dashboard/post.svg?react';
-import autocomplete from 'utils/helpers';
+// import { apisList } from 'components/ApiSidebar/ApiSidebar';
+import GetIcon from '@/ui/icons/dashboard/get.svg';
+import PostIcon from '@/ui/icons/dashboard/post.svg';
+import SearchIcon from '@/ui/icons/search.svg';
+
 import styles from './ApiSearch.module.scss';
-import { ModalBackdrop } from '../../elements';
+import autocomplete from '@/app/lib/helpers';
+import { apisList } from '../ApiSidebar/ApiSidebar';
+import { ModalBackdrop } from '@/ui/elements';
 
 interface IModal {
   closeModal: (v?: object) => any;

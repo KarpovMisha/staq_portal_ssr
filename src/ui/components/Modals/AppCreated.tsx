@@ -1,7 +1,7 @@
-import { useNavigate } from 'react-router';
+import { useRouter } from 'next/navigation';
 
-import { Button, ModalBackdrop, ModalContainer } from 'elements/index';
-import CheckIcon from 'styles/icon/icon_check.svg?react';
+import { Button, ModalBackdrop } from '@/ui/elements';
+import CheckIcon from '@/ui/icons/icon_check.svg';
 import styles from './AppCreated.module.scss';
 
 interface IModal {
@@ -9,7 +9,7 @@ interface IModal {
 }
 
 export default function AppCreated({ closeModal }: IModal) {
-  const navigate = useNavigate();
+  const router = useRouter();
   return (
     <ModalBackdrop onClose={closeModal}>
       <div className={styles.app_created}>
@@ -30,7 +30,7 @@ export default function AppCreated({ closeModal }: IModal) {
             secondaryClassName="popup_secondary"
             type="button"
             onClick={() => {
-              navigate('/dashboard/apps');
+              router.push('/dashboard/apps');
               closeModal({});
             }}
           />
@@ -38,7 +38,7 @@ export default function AppCreated({ closeModal }: IModal) {
             type="submit"
             variant="gradient_primary"
             onClick={() => {
-              navigate('/dashboard/certificates');
+              router.push('/dashboard/certificates');
               closeModal({});
             }}
           >

@@ -7,7 +7,7 @@ import EditIcon from '@/ui/icons/edit.svg';
 import styles from './Business.module.scss';
 
 export default function PhoneField() {
-  function onSubmit(formData) {
+  function onSubmit(formData: any) {
     console.log('formData', formData);
   }
 

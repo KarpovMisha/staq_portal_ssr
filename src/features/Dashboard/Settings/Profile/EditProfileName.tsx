@@ -8,7 +8,7 @@ import styles from './Profile.module.scss';
 
 export default function EditProfileName() {
 
-  function onSubmit(formData) {
+  function onSubmit(formData: any) {
     console.log('formData', formData);
   }
 

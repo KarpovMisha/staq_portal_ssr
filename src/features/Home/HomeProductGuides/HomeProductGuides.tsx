@@ -1,19 +1,10 @@
 import Link from 'next/link';
+import type { ComponentProps } from 'react';
 
 import { Icon } from '@/ui/elements';
 import styles from './HomeProductGuides.module.scss';
 
-type IconName =
-  | 'Account'
-  | 'Bank'
-  | 'Card'
-  | 'Payment'
-  | 'Loan'
-  | 'Auth'
-  | 'Arrow'
-  | 'App'
-  | 'Certificate'
-  | 'Token';
+type IconName = ComponentProps<typeof Icon>['name'];
 
 type GuideCard = {
   title: string;

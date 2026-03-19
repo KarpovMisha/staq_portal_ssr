@@ -1,9 +1,5 @@
-import React from 'react'
+import Notifications from "@/features/Dashboard/Settings/Notifications/Notifications";
 
 export default function page() {
-  return (
-    <div>
-      3333
-    </div>
-  )
+  return <Notifications />;
 }

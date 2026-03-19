@@ -7,7 +7,7 @@ import { FormPhoneInput } from '@/ui/elements/Form';
 import styles from './Profile.module.scss';
 
 export default function EditProfilePhone() {
-  function onSubmit(formData) {
+  function onSubmit(formData: any) {
     console.log('formData', formData);
   }
 

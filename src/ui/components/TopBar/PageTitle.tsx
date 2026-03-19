@@ -1,4 +1,4 @@
-import LogoIcon from 'styles/icon/dashboard/staq_app_logo.svg?react';
+import LogoIcon from '@/ui/icons/staq_app_logo.svg';
 import styles from './PageTitle.module.scss';
 
 export default function PageTitle({ title }: { title: string }) {

@@ -1,9 +1,9 @@
-import AccountIcon from 'styles/icon/dashboard/account_gradient.svg?react';
-import BankIcon from 'styles/icon/dashboard/bank_gradient.svg?react';
-import CardIcon from 'styles/icon/dashboard/card_gradient.svg?react';
-import PaymentIcon from 'styles/icon/dashboard/payments_gradient.svg?react';
-import LoanIcon from 'styles/icon/dashboard/loans_gradient.svg?react';
-import AuthIcon from 'styles/icon/dashboard/auth_gradient.svg?react';
+import AccountIcon from '@/ui/icons/account_gradient.svg';
+import BankIcon from '@/ui/icons/bank_gradient.svg';
+import CardIcon from '@/ui/icons/card_gradient.svg';
+import PaymentIcon from '@/ui/icons/payments_gradient.svg';
+import LoanIcon from '@/ui/icons/loans_gradient.svg';
+import AuthIcon from '@/ui/icons/auth_gradient.svg';
 
 export const apisList = [
   {

@@ -17,13 +17,13 @@ import autocomplete from '@/app/lib/helpers';
 
 type AppProps = {
   apps: {
-    id: string;
-    appId: string;
-    name: string;
-    scopes: string[];
-    description: string;
-    createdDate: string;
-    favourite: boolean;
+    id?: string;
+    appId?: string;
+    name?: string;
+    scopes?: string[];
+    description?: string;
+    createdDate?: string;
+    favourite?: boolean;
   }[];
   callback?: () => void;
 };

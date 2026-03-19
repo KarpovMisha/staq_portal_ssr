@@ -8,7 +8,7 @@ import styles from './Business.module.scss';
 
 export default function EmailField() {
 
-  function onSubmit(formData) {
+  function onSubmit(formData: any) {
     console.log('formData', formData);
   }
 
