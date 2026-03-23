@@ -24,7 +24,7 @@ export default function CreateFirstProdCertificate() {
             name="Get production access"
             variant="gradient_primary"
             type="button"
-            onClick={() => router.push('/dashboard/certificates/production-access')}
+            onClick={() => router.push('/dashboard/certificates/business-information')}
           />
         </div>
       </div>

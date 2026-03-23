@@ -12,7 +12,29 @@ export function getCertificates() {
 }
 
 export async function revokeCertificate(id: string) {
-  return apiClient<CertificatesResponse[]>(`certificate/revoke/${id}`, {
+  return apiClient<CertificatesResponse[]>(`/api/v1/certificate/revoke/${id}`, {
     method: 'POST',
+  });
+}
+
+type UploadCertificateParams = {
+  attachments: {
+    file: File;
+  };
+};
+
+export async function uploadCertificate({ attachments }: UploadCertificateParams) {
+  return apiClient<any>(`/api/v1/certificate/upload`, {
+    attachments,
+    method: 'POST',
+  });
+}
+
+export async function downloadCertificateRequest({ id }: { id: string }): Promise<string> {
+  return apiClient<any>(`/api/v1/certificate/download/${id}`, {
+    method: 'GET',
+    headers: {
+      Accept: 'application/x-x509-ca-cert,text/plain,*/*',
+    },
   });
 }

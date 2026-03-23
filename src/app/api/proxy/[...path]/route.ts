@@ -1,6 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { clearSession, getFreshSession, setSession } from '@/auth/auth';
 
+const PUBLIC_PATHS = ['/api/v1/scope/information'];
+
+function isPublicPath(pathname: string) {
+  return PUBLIC_PATHS.includes(pathname);
+}
+
 async function handler(
   req: NextRequest,
   context: { params: Promise<{ path: string[] }> }
@@ -16,20 +22,31 @@ async function handler(
     }
 
     const { path } = await context.params;
+    const pathname = `/${path.join('/')}`;
+    const publicPath = isPublicPath(pathname);
 
-    const { session, refreshed, shouldClear } = await getFreshSession();
+    let session: Awaited<ReturnType<typeof getFreshSession>>['session'] | undefined;
+    let refreshed = false;
+    let shouldClear = false;
 
-    if (!session?.access_token) {
-      const res = NextResponse.json(
-        { error: 'Unauthorized: no session' },
-        { status: 401 }
-      );
+    if (!publicPath) {
+      const freshSessionResult = await getFreshSession();
+      session = freshSessionResult.session;
+      refreshed = freshSessionResult.refreshed;
+      shouldClear = freshSessionResult.shouldClear;
 
-      if (shouldClear) {
-        clearSession(res);
+      if (!session?.access_token) {
+        const res = NextResponse.json(
+          { error: 'Unauthorized: no session' },
+          { status: 401 }
+        );
+
+        if (shouldClear) {
+          clearSession(res);
+        }
+
+        return res;
       }
-
-      return res;
     }
 
     const targetUrl = new URL(`${API_BASE_URL}/${path.join('/')}`);
@@ -42,7 +59,9 @@ async function handler(
       headers.set('content-type', contentType);
     }
 
-    headers.set('authorization', `Bearer ${session.access_token}`);
+    if (session?.access_token) {
+      headers.set('authorization', `Bearer ${session.access_token}`);
+    }
 
     const body =
       req.method === 'GET' || req.method === 'HEAD'
@@ -66,7 +85,7 @@ async function handler(
       },
     });
 
-    if (refreshed) {
+    if (refreshed && session) {
       setSession(res, session);
     }
 

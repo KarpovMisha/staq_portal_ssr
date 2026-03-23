@@ -9,39 +9,14 @@ import {
 } from "react-international-phone";
 import "react-international-phone/style.css";
 
-// export type PhoneFlag = { iso2: string; src: string };
-
-// const flagSvgs = import.meta.glob('/src/assets/flags/1x1/*.svg', {
-//   eager: true,
-//   query: '?url',
-//   import: 'default',
-// }) as Record<string, string>;
-
-// export const phoneFlags: PhoneFlag[] = Object.entries(flagSvgs).map(([path, src]) => {
-//   const iso2 = path.split('/').pop()!.replace('.svg', '');
-//   return { iso2, src };
-// });
 
 type Props = {
-  /** react-final-form field name, e.g. "phone" */
   name: string;
-
-  /** Optional label text */
   label?: string;
-
-  /** Default country (iso2), e.g. "se" */
   defaultCountry?: string;
-
-  /** Exclude specific countries by ISO2 (lowercase), e.g. ["il"] */
   hiddenCountries?: string[];
-
-  /** Placeholder for the number input */
   placeholder?: string;
-
-  /** Disable input */
   disabled?: boolean;
-
-  /** Optional wrapper className */
   className?: string;
 };
 
@@ -66,10 +41,6 @@ export default function FormPhoneInput({
     });
   }, [hidden]);
 
-  // Optional: keep flags in sync with hiddenCountries too
-  const flags = useMemo(() => {
-    return phoneFlags.filter((f) => !hidden.has(f.iso2));
-  }, [hidden]);
 
   return (
     <Field<string> name={name}>
@@ -89,7 +60,7 @@ export default function FormPhoneInput({
             placeholder={placeholder}
             countries={countries}
             defaultCountry={defaultCountry}
-            flags={flags}
+            flags={phoneFlags}
             inputProps={{
               id: name,
               name,

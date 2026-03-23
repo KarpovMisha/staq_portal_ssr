@@ -7,21 +7,26 @@ import PostIcon from '@/ui/icons/post.svg';
 import ArrowDownIcon from '@/ui/icons/downArrow.svg';
 import styles from './ApiSidebarItem.module.scss';
 
-export default function ApiSidebarItem({
-  item,
-}: {
-  item: { path: string; hash?: string; name: string; children?: { name: string; hash: string }[] };
-}) {
+type ApiSidebarItemProps = {
+  item: {
+    path: string;
+    hash?: string;
+    name: string;
+    children?: { name: string; hash: string }[];
+  };
+};
+
+export default function ApiSidebarItem({ item }: ApiSidebarItemProps) {
   const { path, hash, name } = item;
 
-  const pathname = usePathname
+  const pathname = usePathname();
   const isSamePage = location.pathname === item.path;
 
   function ApiNavItem() {
     if (isSamePage && hash) {
-      return <a href={hash}>{name}</a>;
+      return <a style={{ color: '#A9A9AF'}} href={hash}>{name}</a>;
     }
-    return <Link href={`${path}${hash ?? ''}`}>{name}</Link>;
+    return <Link style={{ color: '#A9A9AF'}} href={`${path}${hash ?? ''}`}>{name}</Link>;
   }
 
   return (

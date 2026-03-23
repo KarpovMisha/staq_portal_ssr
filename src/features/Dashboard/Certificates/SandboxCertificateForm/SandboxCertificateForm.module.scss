@@ -1,0 +1,316 @@
+.create_certificate {
+  max-inline-size: var(--content-width);
+
+  &__back {
+    inline-size: 6rem;
+    block-size: 2.8rem;
+    margin-block-end: 2rem;
+    border-radius: 8px;
+    background: var(--bg-secondary);
+    color: var(--text-color-primary);
+    font-family: var(--font-familly-whyte-medium);
+    text-align: center;
+    cursor: pointer;
+
+    svg {
+      margin-inline-start: 0.5rem;
+      transform: rotate(180deg);
+      path {
+        fill: var(--text-color-primary);
+      }
+    }
+
+    span {
+      margin-inline-start: 0.5rem;
+      font-size: 14px;
+    }
+  }
+
+  &__header {
+    padding-block-end: 3.2rem;
+    color: var(--text-color-primary);
+    font-family: var(--font-familly-whyte-medium);
+    font-size: 28px;
+    letter-spacing: -1px;
+  }
+
+  &__description {
+    margin-block-end: 3rem;
+    color: #717179;
+    color: var(--text-color-secondary);
+    font-family: var(--font-familly-grotesk);
+    font-size: 16px;
+  }
+
+  &__steps {
+    --gap: 10px;
+    --rail: 40px;
+    --bullet: 28px;
+    --line: #e5e7eb;
+
+    display: grid;
+    row-gap: var(--gap);
+    counter-reset: step;
+  }
+
+  &__step {
+    display: grid;
+    grid-template-columns: var(--rail) 1fr;
+    gap: 16px;
+    align-items: start;
+    position: relative;
+  }
+
+  &__rail {
+    justify-self: center;
+    position: relative;
+  }
+
+  &__bullet {
+    display: grid;
+    place-items: center;
+    width: var(--bullet);
+    height: var(--bullet);
+    // border: 2px solid #d0d5dd;
+    border-radius: 50%;
+    background: var(--bg-secondary);
+    color: var(--text-color-tertiary);
+    font-weight: 600;
+  }
+
+  &__title {
+    color: var(--text-color-primary);
+    font-family: var(--font-familly-whyte-medium);
+    font-size: 22px;
+    letter-spacing: -1px;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 6px;
+    position: relative;
+    border: 1px solid var(--border-primary);
+    border-radius: 6px;
+    color: var(--text-color-tertiary);
+  }
+
+  &__search_icon {
+    position: absolute;
+    top: 60%;
+    right: 1rem;
+    color: #999;
+    transform: translateY(-57%);
+    pointer-events: none;
+
+    svg {
+      width: 14px;
+      height: 14px;
+      path {
+        fill: var(--text-color-primary);
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    gap: 1.6rem;
+    flex-direction: column;
+  }
+
+  &__bullet::before {
+    content: counter(step);
+    counter-increment: step;
+  }
+
+  &__step:not(:last-child)::after {
+    content: '';
+    width: 1px;
+    height: calc(100% + var(--gap) - var(--bullet) - 10px);
+    position: absolute;
+    top: calc(var(--bullet) + 6px);
+    left: calc(var(--rail) / 2);
+
+    background: repeating-linear-gradient(
+      to bottom,
+      var(--line) 0px,
+      var(--line) 3px,
+      transparent 3px,
+      transparent 6px
+    );
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+
+  &__upload {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    // max-inline-size: 37rem;
+    padding: 2rem;
+    border: 1px dashed var(--border-primary);
+    border-radius: 16px;
+    cursor: pointer;
+
+    svg {
+      margin: 0 auto;
+      path {
+        fill: var(--text-color-primary);
+      }
+    }
+
+    p {
+      margin: 0 auto;
+      color: #3f3f45;
+      color: var(--text-color-secondary);
+      font-family: var(--font-familly-grotesk);
+      font-size: 14px;
+    }
+
+    > div {
+      width: 9rem;
+      margin: 0 auto;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      background: var(--bg-secondary);
+      color: #fff;
+      letter-spacing: -1px;
+    }
+  }
+
+  &__uploading {
+    display: flex;
+    gap: 12px;
+    padding: 2rem;
+    border: 1px solid var(--border-primary);
+    border-radius: 16px;
+    color: var(--text-color-primary);
+
+    svg {
+      width: 26px;
+      height: 26px;
+      path {
+        fill: var(--text-color-primary);
+      }
+    }
+  }
+
+  &__success {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding: 2rem;
+    color: var(--text-color-primary);
+    border: 1px solid var(--border-primary);
+    border-radius: 16px;
+
+    &--name {
+      display: flex;
+      flex-direction: column;
+
+      p {
+        color: #13BF3E;
+      }
+    }
+
+    &--trash {
+      background-color: var(--bg-secondary);
+      width: 32px;
+      height: 32px;
+      display: grid;
+      align-items: center;
+      justify-items: center;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-left: auto ;
+
+      svg {
+        path {
+          fill: var(--text-color-primary)
+        }
+      }
+    }
+  }
+
+  &__uploaded {
+    display: grid;
+    grid-template-columns: 3rem 1fr 3rem;
+    align-items: center;
+    max-inline-size: 37rem;
+    padding: 1rem;
+    border: 1px solid var(--border-primary);
+    border-radius: 6px;
+
+    svg:first-child {
+      width: 2.4rem;
+      height: 3rem;
+      path {
+        fill: var(--text-color-primary);
+      }
+    }
+
+    > span:last-child {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 3.2rem;
+      height: 3.2rem;
+      border-radius: 4px;
+      background: #efeff1;
+      cursor: pointer;
+
+      svg {
+        width: 13px;
+        height: 14px;
+      }
+    }
+  }
+
+  &__file {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-familly-whyte-medium);
+    line-height: 2rem;
+    letter-spacing: -0.5px;
+
+    > div:first-child {
+      color: var(--text-color-primary);
+      font-size: 16px;
+    }
+    > div:last-child {
+      color: #13bf3e;
+      font-size: 14px;
+    }
+  }
+
+  &__download_btn {
+    inline-size: 18.6rem;
+    button {
+      padding: 0.8rem 1.6rem;
+      color: #fff;
+      font-family: var(--font-familly-whyte-medium);
+      font-size: 16px;
+      letter-spacing: -1px;
+    }
+  }
+
+  &__show_btn {
+    inline-size: 18.6rem;
+    button {
+      padding: 0.8rem 1.6rem;
+      border-radius: 8px;
+      color: #fff;
+      font-family: var(--font-familly-whyte-medium);
+      font-size: 16px;
+      letter-spacing: -1px;
+      text-transform: initial;
+    }
+  }
+}
+
+:global .dark-theme :local {
+  .create_certificate {
+    &__steps {
+      --line: #717179;
+    }
+  }
+}

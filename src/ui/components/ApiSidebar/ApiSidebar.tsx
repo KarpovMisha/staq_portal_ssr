@@ -1,86 +1,21 @@
-
+'use client';
 import { useEffect } from 'react';
 import Link from 'next/link';
 
 import SearchIcon from '@/ui/icons/search.svg';
-import ApiIcon from '@/ui/icons/dashboard/api_reference.svg';
-import SupportIcon from '@/ui/icons/dashboard/support.svg';
+import ApiIcon from '@/ui/icons/api_reference.svg';
+import SupportIcon from '@/ui/icons/support.svg';
 import ApiSidebarItem from './ApiSidebarItem';
 import { useAppDispatch } from '@/store/hooks';
 import { dashboardActions } from '@/store/slices/dashboard';
 import styles from './ApiSidebar.module.scss';
+import { useApiReferencesQuery } from '@/hooks/useApiReferencesQuery';
+import { ApiVersionSwitcher } from '../ApiVersionSwitcher/ApiVersionSwitcher';
 
-export const apisList = [
-  {
-    groupName: 'Identity & Verification',
-    icon: ApiIcon,
-    childs: [
-      {
-        name: 'Identity',
-        description: `This API allows to partner's application to manage users and their identity`,
-        path: '/api-references/identity',
-        hash: '#description/introduction',
-        children: [
-          {
-            name: 'Get certificate',
-            description: `Retrieves the public certificate that can be used to validate access tokens`,
-            hash: '#api-1/tag/authentication/GET/certificates/{clientId}',
-          },
-          {
-            name: 'Get RSA public key',
-            description: `This API allows to partner's application to manage users and their identity`,
-            hash: '#api-1/tag/rsa/GET/rsa/key',
-          },
-        ],
-      },
-      {
-        name: 'KYC',
-        description: `API to initiate and manage enrollment process for a new Individual Customers.`,
-        path: '/api-references/kyc',
-        hash: '#description/introduction',
-        children: [
-          {
-            name: 'Get all KYCs',
-            description: 'Retrieves KYCs initiated by the application and associated customers',
-            hash: '#api-1/tag/customers/GET/partner/kyc/customers',
-          },
-          {
-            name: 'Create a KYC',
-            description: `Creates a new KYC. Payload should application/json. The payload content should be formed according to the metadata descriprion retirned by /meta/steps method.`,
-            hash: '#api-1/tag/customers/POST/partner/kyc/customers',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    groupName: 'Accounts',
-    icon: ApiIcon,
-    childs: [
-      {
-        name: 'Accounts',
-        description: `API allows managing Bank accounts for a third-party partner application`,
-        path: '/api-references/accounts',
-        hash: '#description/introduction',
-        children: [
-          {
-            name: 'List all customers',
-            description: `Returns all available for the partner customers and their accounts`,
-            hash: '#api-1/tag/customers/GET/customers',
-          },
-          {
-            name: 'Create an account',
-            description: `Opens a new account for the customer`,
-            hash: '#tag/accounts/get/customers/{customerId}/accounts',
-          },
-        ],
-      },
-    ],
-  },
-];
 
 export default function ApiSidebar() {
   const dispatch = useAppDispatch();
+  const { data: apisList } = useApiReferencesQuery();
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -107,6 +42,7 @@ export default function ApiSidebar() {
           <div>Quick search...</div>
           <span>⌘K</span>
         </div>
+        <ApiVersionSwitcher />
         <div
           className={styles.api_sidebar__link}
           style={{
@@ -118,10 +54,10 @@ export default function ApiSidebar() {
         >
           <div style={{ color: 'white' }}>Overview</div>
           <div>
-            <Link href="/api-references/api-overview">API Overview</Link>
+            <Link style={{ color: '#A9A9AF'}} href="/api-references/api-overview">API Overview</Link>
           </div>
           <div>
-            <Link href="/api-references/authentication">Authentication</Link>
+            <Link style={{ color: '#A9A9AF'}}href="/api-references/authentication">Authentication</Link>
           </div>
         </div>
         {apisList?.map((c) => {

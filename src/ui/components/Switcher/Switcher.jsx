@@ -4,7 +4,7 @@ import Switch from 'react-switch';
 import SunIcon from '@/ui/icons/sun.svg';
 import MoonIcon from '@/ui/icons/moon.svg';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { selectIsDarkMode, switcherActions, toggleTheme } from '@/store/slices/switcherSlice';
+import { selectIsDarkMode, switcherActions, toggleTheme } from '@/store/slices/switcher';
 
 export default function Switcher() {
   const handleDiameter = 17;

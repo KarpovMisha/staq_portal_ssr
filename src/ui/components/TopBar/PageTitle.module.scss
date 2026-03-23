@@ -1,23 +1,24 @@
-.page_title {
+.pageTitle {
   display: flex;
   gap: 8px;
   align-items: center;
   color: var(--text-color-primary);
   padding-inline: 12px;
   padding-block: 16px;
+}
 
-  svg {
-    width: 22px;
-    height: 26px;
-    path {
-      fill: var(--text-color-primary);
-    }
-  }
+.logo {
+  width: 22px;
+  height: 26px;
 
-  span {
-    padding-left: 8px;
-    border-left: 1px solid var(--border-primary);
-    font-size: 16px;
-    font-weight: 500;
+  path {
+    fill: var(--text-color-primary);
   }
+}
+
+.title {
+  padding-left: 8px;
+  border-left: 1px solid var(--border-primary);
+  font-size: 16px;
+  font-weight: 500;
 }

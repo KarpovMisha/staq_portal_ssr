@@ -3,8 +3,9 @@ import styles from './PageTitle.module.scss';
 
 export default function PageTitle({ title }: { title: string }) {
   return (
-    <div className={styles.page_title}>
-      <LogoIcon /> <span>{title}</span>
+    <div className={styles.pageTitle}>
+      <LogoIcon className={styles.logo} />
+      <span className={styles.title}>{title}</span>
     </div>
   )
 }

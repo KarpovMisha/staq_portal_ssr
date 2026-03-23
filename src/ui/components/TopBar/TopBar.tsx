@@ -1,47 +1,33 @@
 "use client";
-// import { useMatches,useNavigate } from 'react-router';
+import { usePathname, useRouter } from 'next/navigation';
 import cn from 'classnames';
 
-// import { Breadcrumbs, Button } from 'elements/index';
-// import CloseIcon from 'styles/icon/dashboard/close.svg?react';
+import { Breadcrumbs, Button } from '@/ui/elements';
+import CloseIcon from '@/ui/icons/close.svg';
+import TopBarAuthentication from './TopBarAuthentication';
 import AccountSettings from './AccountSettings';
 import DocsNavigation from './DocsNavigation';
 import TopBarActions from './TopBarActions';
-// import PageTitle from './PageTitle';
+import PageTitle from './PageTitle';
 import styles from './TopBar.module.scss';
-import TopBarAuthentication from './TopBarAuthentication';
-import { Breadcrumbs } from '@/ui/elements';
-// import { useAuth } from '@/auth/AuthProvider';
 
-// type BreadcrumbHandle = {
-//   breadcrumb?: (match: any) => React.ReactNode;
-//   section?: 'dashboard' | 'production-certificate' | 'home';
-// };
-
-// type BreadcrumbMatch = {
-//   handle?: BreadcrumbHandle;
-// };
-
-export default function TopBar({ page }: { page: string }) {
-  // const { authenticated } = useAuth();
-  const isHomePages = page === 'home';
-  const isDashboardPages = page === 'dashboard';
-
-  // const navigate = useNavigate();
-  // const matches = useMatches() as BreadcrumbMatch[];
-  // const crumbs = matches.filter(
-  //   (match) => !!match.handle && typeof match.handle.breadcrumb === 'function'
-  // );
-  // const isHomePages = matches.some((m) => m.handle?.section === 'home');
-  // const isProductionCertificatePage = matches.some((m) => m.handle?.section === 'production-certificate');
-  // const isDashboardPages = matches.some((m) => m.handle?.section === 'dashboard') && !isProductionCertificatePage;
+export default function TopBar() {
+  const pathname = usePathname();
+  const isHomePages = !pathname.startsWith('/dashboard');
+  const isProductionCertificatePage = pathname.startsWith(
+    '/dashboard/certificates/business-information',
+  );;
+  const isDashboardPages = pathname.startsWith(
+    '/dashboard',
+  ) && !isProductionCertificatePage;
+  const router = useRouter();
 
   return (
     <div className={styles.topBar}>
       <div className={cn(styles.topBar__left, [styles['topBar__left--isBreadcrumb']])}>
         {isHomePages && <DocsNavigation />}
         {isDashboardPages && <AccountSettings isDashboardPage={isDashboardPages} />}
-        {/* {isProductionCertificatePage && <PageTitle title="Production Access" />} */}
+        {isProductionCertificatePage && <PageTitle title="Production Access" />}
       </div>
       <div className={styles.topBar__middle}>
         <Breadcrumbs />
@@ -49,16 +35,16 @@ export default function TopBar({ page }: { page: string }) {
       <div className={styles.topBar__right}>
         {isHomePages  && <TopBarAuthentication isDashboardPage={isDashboardPages} />}
         {isDashboardPages && <TopBarActions />}
-        {/* {isProductionCertificatePage && (
+        {isProductionCertificatePage && (
           <Button
-            onClick={() => navigate('/dashboard/certificates')}
+            onClick={() => router.push('/dashboard/certificates')}
           >
             <div className={styles.topBar__close}>
               Exit setup <CloseIcon />
             </div>
           </Button>
 
-        )} */}
+        )}
       </div>
     </div>
   );

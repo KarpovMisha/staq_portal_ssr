@@ -17,8 +17,15 @@ function FormSelect(props) {
     isMulti = false,
     isSearchable = false,
     selectType = 'primary',
+    instanceId,
+    inputId,
     ...rest
   } = props;
+
+  // Keep IDs deterministic for SSR hydration (react-select otherwise uses a global counter).
+  const stableInstanceId = instanceId || input?.name || 'form-select';
+  const stableInputId = inputId || `${stableInstanceId}-input`;
+
   const focusHandler = (e) => {
     input.onFocus(e);
     if (onFocus) {
@@ -56,6 +63,8 @@ function FormSelect(props) {
         <Select
           className='react-select-container'
           classNamePrefix='react-select react-select-internal'
+          instanceId={stableInstanceId}
+          inputId={stableInputId}
           onChange={changeHandler}
           onBlur={blurHandler}
           onFocus={focusHandler}
@@ -87,7 +96,9 @@ FormSelect.propTypes = {
   options: array,
   isMulti: bool,
   isSearchable: bool,
-  selectType: string
+  selectType: string,
+  instanceId: string,
+  inputId: string,
 };
 
 // eslint-disable-next-line

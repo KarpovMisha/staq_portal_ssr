@@ -1,0 +1,102 @@
+.prod_crt_form {
+  max-inline-size: 729px;
+  margin: 0 auto;
+  color: var(--text-color-primary);
+  padding-inline: 16px;
+
+  h1 {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  &__description {
+    color: var(--text-color-secondary);
+    font-size: 16px;
+    padding-block-start: 16px;
+    font-family: var(--font-familly-grotesk);
+  }
+
+  &__fields {
+    padding-block-start: 56px;
+    display: flex;
+    gap: 52px;
+    flex-direction: column;
+  }
+
+  &__row {
+    display: flex;
+    gap: 12px;
+    flex-direction: column;
+    max-inline-size: 640px;
+
+    h4 {
+      letter-spacing: -1px;
+      // margin: 0;
+      // font-size: 22px;
+    }
+
+    p {
+      font-size: 14px;
+    }
+
+    label {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    &--ownership{
+      label {
+        padding-left: 25px;
+      }
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 12px;
+    padding-inline: 16px;
+    padding-block-start: 64px;
+
+    button {
+      border-radius: 4px;
+      font-size: 16px;
+      padding-inline: 14px;
+      padding-block: 8px ;
+    }
+  }
+
+  &__dob {
+    display: flex;
+    gap: 1px;
+    max-width: 232px;
+    border: 1px solid var(--border-primary);
+    border-radius: 6px;
+    background-color: var(--bg-secondary);
+    overflow: hidden;
+
+    >div:last-child {
+      min-inline-size: 88px;
+    }
+
+    :global(.primary_input) {
+      display: flex;
+      justify-content: center;
+      input {
+        border: none;
+        border-radius: 0;
+      }
+    }
+  }
+}
+
+.inputWithCheck {
+  position: relative;
+}
+
+.validIcon {
+  display: inline-flex;
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+}

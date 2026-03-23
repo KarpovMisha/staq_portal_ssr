@@ -5,14 +5,15 @@ import { useRouter } from 'next/navigation';
 import cn from 'classnames';
 
 // import { apisList } from 'components/ApiSidebar/ApiSidebar';
-import GetIcon from '@/ui/icons/dashboard/get.svg';
-import PostIcon from '@/ui/icons/dashboard/post.svg';
+import GetIcon from '@/ui/icons/get.svg';
+import PostIcon from '@/ui/icons/post.svg';
 import SearchIcon from '@/ui/icons/search.svg';
 
 import styles from './ApiSearch.module.scss';
 import autocomplete from '@/app/lib/helpers';
-import { apisList } from '../ApiSidebar/ApiSidebar';
 import { ModalBackdrop } from '@/ui/elements';
+import { useApiReferencesQuery } from '@/hooks/useApiReferencesQuery';
+import { ApiReferencesResponse } from '@/services/apiReferences';
 
 interface IModal {
   closeModal: (v?: object) => any;
@@ -26,7 +27,7 @@ type ApiItem = {
   children?: ApiItem[];
 };
 
-function flattenApis(list: typeof apisList) {
+function flattenApis(list: ApiReferencesResponse[]): ApiItem[] {
   return list.flatMap((group) =>
     group.childs.flatMap((parent) => {
       const parentItem = {
@@ -48,6 +49,8 @@ function flattenApis(list: typeof apisList) {
 }
 
 export default function ApiSearch({ closeModal }: IModal) {
+  const { data: apisList = [] } = useApiReferencesQuery();
+
   const [searchKey, setKey] = useState<string>('');
   const router = useRouter();
 

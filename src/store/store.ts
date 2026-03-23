@@ -1,12 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit';
 import dashboard from './slices/dashboard';
-import switcher from './slices/switcherSlice';
+import switcher from './slices/switcher';
+import prodCertificates from './slices/prodCertificates';
+import apiReferences from './slices/apiReferences';
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
       dashboard,
-      switcher
+      switcher,
+      prodCertificates,
+      apiReferences,
     },
   });
 };

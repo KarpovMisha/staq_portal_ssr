@@ -1,4 +1,5 @@
-import { HomeSidebar, TopBar } from '@/ui/components';
+import { TopBar } from '@/ui/components';
+import Sidebar from '@/ui/components/Sidebars/Sidebar';
 
 export default function PublicLayout({
   children,
@@ -8,10 +9,10 @@ export default function PublicLayout({
   return (
     <div className="container">
       <div className="content">
-        <TopBar page="home" />
+        <TopBar />
         <div className="main_layout">
           <div>
-            <aside id="sidebar"><HomeSidebar/></aside>
+            <aside id="sidebar"><Sidebar /></aside>
             <main className="main_grid">{children}</main>
           </div>
         </div>

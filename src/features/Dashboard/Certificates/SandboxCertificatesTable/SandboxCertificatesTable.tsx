@@ -9,6 +9,7 @@ import styles from './CertificateTable.module.scss';
 import { Button } from '@/ui/elements';
 import { useAppDispatch } from '@/store/hooks';
 import { dashboardActions } from '@/store/slices/dashboard';
+import { useDownloadCertificate } from '@/hooks/useDownloadCertificate';
 
 type SandboxCertificatesTableProps = {
   certificates: {
@@ -26,11 +27,7 @@ export default function SandboxCertificatesTable({
   description,
 }: SandboxCertificatesTableProps) {
   const dispatch = useAppDispatch();
-
-  function downloadFile(certificateId: any) {
-    console.log(certificateId);
-    // dispatch(downloadCertificate({ id: certificateId }));
-  }
+  const { mutate: downloadCertificate } = useDownloadCertificate();
 
   return (
     <div className={styles.cert_table}>
@@ -76,7 +73,7 @@ export default function SandboxCertificatesTable({
                             </div>
                           </Button>
                         )}
-                        <Button onClick={() => downloadFile(cert.id)}>
+                        <Button onClick={() => downloadCertificate({ id: cert.id })}>
                           <div className={styles['cert_table__table--button']}>
                             Download <DownloadIcon />
                           </div>

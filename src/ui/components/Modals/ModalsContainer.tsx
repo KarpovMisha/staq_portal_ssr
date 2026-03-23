@@ -33,12 +33,11 @@ function ModalsContainer() {
         //   />
         // );
       case 'api search':
-        return 'ApiSearch';
-        // return (
-        //   <ApiSearch
-        //     closeModal={() => dispatch(dashboardActions.setActiveModalDetails({ name: '' }))}
-        //   />
-        // );
+        return (
+          <ApiSearch
+            closeModal={() => dispatch(dashboardActions.setActiveModalDetails({ name: '' }))}
+          />
+        );
       case 'unsaved changes':
         return 'UnsavedChanges';
         // return (

@@ -93,7 +93,6 @@ export const phoneFlags: PhoneFlag[] = [
   { iso2: "hu", src: "/flags/hu.svg" },
   { iso2: "id", src: "/flags/id.svg" },
   { iso2: "ie", src: "/flags/ie.svg" },
-  { iso2: "il", src: "/flags/il.svg" },
   { iso2: "in", src: "/flags/in.svg" },
   { iso2: "io", src: "/flags/io.svg" },
   { iso2: "iq", src: "/flags/iq.svg" },

@@ -13,6 +13,37 @@ function base64url(input: Buffer | string) {
     .replace(/=+$/, '');
 }
 
+function isObject(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null;
+}
+
+function getString(value: unknown): string | undefined {
+  return typeof value === 'string' ? value : undefined;
+}
+
+function getNumber(value: unknown): number | undefined {
+  return typeof value === 'number' && Number.isFinite(value) ? value : undefined;
+}
+
+async function safeFetch(
+  input: string | URL,
+  init?: RequestInit,
+  timeoutMs = 8000,
+) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), timeoutMs);
+
+  try {
+    return await fetch(input, {
+      ...init,
+      signal: controller.signal,
+      cache: 'no-store',
+    });
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
 export function createState() {
   return base64url(crypto.randomBytes(32));
 }
@@ -38,6 +69,28 @@ export type SessionData = {
   };
 };
 
+type AuthState =
+  | {
+      authenticated: true;
+      user: NonNullable<SessionData['user']> | null;
+    }
+  | {
+      authenticated: false;
+      user: null;
+    };
+
+type RefreshResult =
+  | { ok: true; session: SessionData }
+  | { ok: false; reason: 'no_refresh_token' | 'invalid_grant' | 'network' | 'bad_response' };
+
+type FreshSessionResult = {
+  session: SessionData | null;
+  authenticated: boolean;
+  refreshed: boolean;
+  shouldClear: boolean;
+  updatedSession: SessionData | null;
+};
+
 const SESSION_COOKIE_NAME = 'session';
 const SESSION_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
 const REFRESH_BUFFER_MS = 30_000;
@@ -49,7 +102,26 @@ export async function getSession(): Promise<SessionData | null> {
   if (!raw) return null;
 
   try {
-    return JSON.parse(raw) as SessionData;
+    const parsed = JSON.parse(raw) as unknown;
+
+    if (!isObject(parsed)) return null;
+    if (typeof parsed.access_token !== 'string') return null;
+    if (typeof parsed.expires_at !== 'number') return null;
+
+    return {
+      access_token: parsed.access_token,
+      refresh_token: getString(parsed.refresh_token),
+      id_token: getString(parsed.id_token),
+      expires_at: parsed.expires_at,
+      user: isObject(parsed.user)
+        ? {
+            sub: getString(parsed.user.sub),
+            name: getString(parsed.user.name),
+            email: getString(parsed.user.email),
+            preferred_username: getString(parsed.user.preferred_username),
+          }
+        : undefined,
+    };
   } catch {
     return null;
   }
@@ -66,7 +138,26 @@ export function setSession(res: NextResponse, session: SessionData) {
 }
 
 export function clearSession(res: NextResponse) {
-  res.cookies.delete(SESSION_COOKIE_NAME);
+  res.cookies.set(SESSION_COOKIE_NAME, '', {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    path: '/',
+    expires: new Date(0),
+  });
+}
+
+// Используй только в route handlers / server actions.
+// Не вызывай это из layout/page во время рендера.
+export async function clearSessionCookie() {
+  const store = await cookies();
+  store.set(SESSION_COOKIE_NAME, '', {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    path: '/',
+    expires: new Date(0),
+  });
 }
 
 export async function setPkceCookies(state: string, codeVerifier: string) {
@@ -99,8 +190,21 @@ export async function getPkceCookies() {
 }
 
 export function clearPkceCookies(res: NextResponse) {
-  res.cookies.delete('kc_state');
-  res.cookies.delete('kc_code_verifier');
+  res.cookies.set('kc_state', '', {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    path: '/',
+    expires: new Date(0),
+  });
+
+  res.cookies.set('kc_code_verifier', '', {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    path: '/',
+    expires: new Date(0),
+  });
 }
 
 export async function setReturnToCookie(returnTo: string) {
@@ -120,12 +224,7 @@ export function buildRegisterUrl() {
   const codeVerifier = createCodeVerifier();
   const codeChallenge = createCodeChallenge(codeVerifier);
 
-  const authUrl = new URL(keycloak.authUrl());
-
-  // меняем /auth -> /registrations
-  const registerUrl = authUrl.toString().replace(/\/auth$/, '/registrations');
-  const url = new URL(registerUrl);
-
+  const url = new URL(keycloak.authUrl());
   url.searchParams.set('client_id', keycloak.clientId);
   url.searchParams.set('redirect_uri', keycloak.redirectUri);
   url.searchParams.set('response_type', 'code');
@@ -134,6 +233,9 @@ export function buildRegisterUrl() {
   url.searchParams.set('code_challenge', codeChallenge);
   url.searchParams.set('code_challenge_method', 'S256');
 
+  // Для Keycloak это надёжнее, чем replace(/\/auth$/, '/registrations')
+  url.searchParams.set('kc_action', 'register');
+
   return {
     url: url.toString(),
     state,
@@ -141,9 +243,7 @@ export function buildRegisterUrl() {
   };
 }
 
-export function buildLoginUrl(options?: {
-  forceLogin?: boolean;
-}) {
+export function buildLoginUrl(options?: { forceLogin?: boolean }) {
   const state = createState();
   const codeVerifier = createCodeVerifier();
   const codeChallenge = createCodeChallenge(codeVerifier);
@@ -168,99 +268,168 @@ export function buildLoginUrl(options?: {
   };
 }
 
+function buildSessionFromTokens(
+  tokens: Record<string, unknown>,
+  fallbackUser?: SessionData['user'],
+  fallbackRefreshToken?: string,
+  fallbackIdToken?: string,
+): SessionData | null {
+  const accessToken = getString(tokens.access_token);
+  if (!accessToken) return null;
+
+  const idToken = getString(tokens.id_token) ?? fallbackIdToken;
+  const refreshToken = getString(tokens.refresh_token) ?? fallbackRefreshToken;
+  const expiresIn = getNumber(tokens.expires_in) ?? 300;
+
+  let user = fallbackUser;
+
+  if (idToken) {
+    try {
+      const payload = decodeJwt(idToken);
+
+      user = {
+        sub: typeof payload.sub === 'string' ? payload.sub : undefined,
+        name: typeof payload.name === 'string' ? payload.name : undefined,
+        email: typeof payload.email === 'string' ? payload.email : undefined,
+        preferred_username:
+          typeof payload.preferred_username === 'string'
+            ? payload.preferred_username
+            : undefined,
+      };
+    } catch (error) {
+      console.warn('[auth] failed to decode id_token', error);
+    }
+  }
+
+  return {
+    access_token: accessToken,
+    refresh_token: refreshToken,
+    id_token: idToken,
+    expires_at: Date.now() + expiresIn * 1000,
+    user,
+  };
+}
+
+async function readErrorBody(res: Response): Promise<string> {
+  try {
+    return await res.text();
+  } catch {
+    return '';
+  }
+}
+
+function isInvalidGrant(status: number, errorText: string) {
+  return status === 400 && errorText.includes('"error":"invalid_grant"');
+}
+
 export async function exchangeCodeForTokens(
   code: string,
-  codeVerifier: string
-): Promise<SessionData> {
-  const res = await fetch(keycloak.tokenUrl(), {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/x-www-form-urlencoded',
-    },
-    body: new URLSearchParams({
-      grant_type: 'authorization_code',
-      client_id: keycloak.clientId,
-      code,
-      redirect_uri: keycloak.redirectUri,
-      code_verifier: codeVerifier,
-    }),
-    cache: 'no-store',
-  });
-
-  if (!res.ok) {
-    throw new Error(await res.text());
-  }
-
-  const tokens = await res.json();
-  const payload = tokens.id_token ? decodeJwt(tokens.id_token) : {};
-
-  return {
-    access_token: tokens.access_token,
-    refresh_token: tokens.refresh_token,
-    id_token: tokens.id_token,
-    expires_at: Date.now() + Number(tokens.expires_in ?? 300) * 1000,
-    user: {
-      sub: typeof payload.sub === 'string' ? payload.sub : undefined,
-      name: typeof payload.name === 'string' ? payload.name : undefined,
-      email: typeof payload.email === 'string' ? payload.email : undefined,
-      preferred_username:
-        typeof payload.preferred_username === 'string'
-          ? payload.preferred_username
-          : undefined,
-    },
-  };
-}
-
-// ВАЖНО:
-// refresh failure тут не throw-ится наружу как "ошибка приложения".
-// Мы возвращаем null и считаем пользователя разлогиненным.
-export async function refreshSession(
-  session: SessionData
+  codeVerifier: string,
 ): Promise<SessionData | null> {
-  if (!session.refresh_token) {
+  try {
+    const res = await safeFetch(keycloak.tokenUrl(), {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams({
+        grant_type: 'authorization_code',
+        client_id: keycloak.clientId,
+        code,
+        redirect_uri: keycloak.redirectUri,
+        code_verifier: codeVerifier,
+      }),
+    });
+
+    if (!res.ok) {
+      const errorText = await readErrorBody(res);
+      console.error('[auth] exchangeCodeForTokens failed:', res.status, errorText);
+      return null;
+    }
+
+    const tokens = (await res.json()) as unknown;
+
+    if (!isObject(tokens)) {
+      console.error('[auth] exchangeCodeForTokens returned invalid JSON');
+      return null;
+    }
+
+    return buildSessionFromTokens(tokens);
+  } catch (error) {
+    console.error('[auth] exchangeCodeForTokens fetch failed:', error);
     return null;
   }
-
-  const res = await fetch(keycloak.tokenUrl(), {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/x-www-form-urlencoded',
-    },
-    body: new URLSearchParams({
-      grant_type: 'refresh_token',
-      client_id: keycloak.clientId,
-      refresh_token: session.refresh_token,
-    }),
-    cache: 'no-store',
-  });
-
-  if (!res.ok) {
-    return null;
-  }
-
-  const tokens = await res.json();
-
-  return {
-    access_token: tokens.access_token,
-    refresh_token: tokens.refresh_token ?? session.refresh_token,
-    id_token: tokens.id_token ?? session.id_token,
-    expires_at: Date.now() + Number(tokens.expires_in ?? 300) * 1000,
-    user: session.user,
-  };
 }
 
-export async function getFreshSession(): Promise<{
-  session: SessionData | null;
-  refreshed: boolean;
-  shouldClear: boolean;
-}> {
+export async function refreshSession(session: SessionData): Promise<RefreshResult> {
+  if (!session.refresh_token) {
+    return { ok: false, reason: 'no_refresh_token' };
+  }
+
+  try {
+    const res = await safeFetch(keycloak.tokenUrl(), {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams({
+        grant_type: 'refresh_token',
+        client_id: keycloak.clientId,
+        refresh_token: session.refresh_token,
+      }),
+    });
+
+    if (!res.ok) {
+      const errorText = await readErrorBody(res);
+
+      if (isInvalidGrant(res.status, errorText)) {
+        // Это нормальный logout state, не console.error
+        console.warn('[auth] refresh token is no longer valid');
+        return { ok: false, reason: 'invalid_grant' };
+      }
+
+      console.error('[auth] refreshSession failed:', res.status, errorText);
+      return { ok: false, reason: 'network' };
+    }
+
+    const tokens = (await res.json()) as unknown;
+
+    if (!isObject(tokens)) {
+      console.error('[auth] refreshSession returned invalid JSON');
+      return { ok: false, reason: 'bad_response' };
+    }
+
+    const nextSession = buildSessionFromTokens(
+      tokens,
+      session.user,
+      session.refresh_token,
+      session.id_token,
+    );
+
+    if (!nextSession) {
+      return { ok: false, reason: 'bad_response' };
+    }
+
+    return {
+      ok: true,
+      session: nextSession,
+    };
+  } catch (error) {
+    console.error('[auth] refreshSession fetch failed:', error);
+    return { ok: false, reason: 'network' };
+  }
+}
+
+export async function getFreshSession(): Promise<FreshSessionResult> {
   const session = await getSession();
 
   if (!session) {
     return {
       session: null,
+      authenticated: false,
       refreshed: false,
       shouldClear: false,
+      updatedSession: null,
     };
   }
 
@@ -269,40 +438,48 @@ export async function getFreshSession(): Promise<{
   if (!shouldRefresh) {
     return {
       session,
+      authenticated: true,
       refreshed: false,
       shouldClear: false,
+      updatedSession: null,
     };
   }
 
-  const refreshedSession = await refreshSession(session);
+  const refreshResult = await refreshSession(session);
 
-  if (!refreshedSession) {
+  if (!refreshResult.ok) {
     return {
       session: null,
+      authenticated: false,
       refreshed: false,
-      shouldClear: true,
+      shouldClear:
+        refreshResult.reason === 'invalid_grant' ||
+        refreshResult.reason === 'no_refresh_token',
+      updatedSession: null,
     };
   }
 
   return {
-    session: refreshedSession,
+    session: refreshResult.session,
+    authenticated: true,
     refreshed: true,
     shouldClear: false,
+    updatedSession: refreshResult.session,
   };
 }
 
-export async function getAuthState() {
-  const { session } = await getFreshSession();
+export async function getAuthState(): Promise<AuthState> {
+  const { authenticated, session } = await getFreshSession();
 
-  if (!session) {
+  if (!authenticated || !session) {
     return {
-      authenticated: false as const,
+      authenticated: false,
       user: null,
     };
   }
 
   return {
-    authenticated: true as const,
+    authenticated: true,
     user: session.user ?? null,
   };
 }

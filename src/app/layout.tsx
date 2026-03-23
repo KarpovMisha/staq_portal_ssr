@@ -10,6 +10,7 @@ import Modals from '../ui/components/Modals/ModalsContainer';
 import { abcWhyte, spaceGrotesk } from './fonts';
 import '@/ui/styles/variables.scss';
 import '@/ui/styles/index.scss';
+import 'flag-icons/css/flag-icons.min.css';
 
 export default async function RootLayout({
   children,
@@ -20,7 +21,7 @@ export default async function RootLayout({
   const isDark = cookieStore.get('isDarkTheme')?.value === 'true';
 
   const auth = await getAuthState();
-  console.log('auth', auth.authenticated);
+
   return (
     <html
       lang="en"
