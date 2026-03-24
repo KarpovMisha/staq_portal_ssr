@@ -1,7 +1,6 @@
 'use client';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-// import { Link, Link, useMatch } from 'react-router';
 import cn from 'classnames';
 
 // import HomeIcon from 'styles/icon/dashboard/home.svg';
@@ -46,7 +45,8 @@ function NavItem({
 
 export default function DocsNavigation() {
   const dispatch = useAppDispatch();
-  // const isApiReferencesPage = useMatch('/api-references/*');
+  const pathname = usePathname();
+  const isApiReferencesPage = pathname.startsWith('/api-references');
 
   return (
     <div className={styles.docs_navigation}>
@@ -56,8 +56,7 @@ export default function DocsNavigation() {
             <div className={styles.docs_navigation__logo}>
               <LogoIcon />
             </div>
-            <span>Docs</span>
-            {/* <span>{isApiReferencesPage ? 'API References' : 'Docs'}</span> */}
+            <span>{isApiReferencesPage ? 'API References' : 'Docs'}</span>
             <div
               className={cn(styles.docs_navigation__arrow, {
                 [styles['docs_navigation__arrow--open']]: open,
@@ -111,12 +110,12 @@ export default function DocsNavigation() {
                 </div>
               </div>
             </div>
-            <div className={styles.account_settings__row}>
+            <div className={styles.docs_navigation__row}>
               <div
+                className={styles.docs_navigation__item}
                 onClick={() => {
                   window.location.href = '/api/auth/logout';
                 }}
-                className={styles.account_settings__item}
               >
                 <div>Logout</div>
                 <LogOutIcon />
@@ -126,7 +125,11 @@ export default function DocsNavigation() {
         )}
       />
       <div
-        onClick={() => dispatch(dashboardActions.setActiveModalDetails({ name: 'docs search' }))}
+        onClick={() =>
+          dispatch(
+            dashboardActions.setActiveModalDetails({ name: 'docs search' }),
+          )
+        }
         className={styles.docs_navigation__search}
       >
         <SearchIcon />

@@ -234,7 +234,7 @@ export function buildRegisterUrl() {
   url.searchParams.set('code_challenge_method', 'S256');
 
   // Для Keycloak это надёжнее, чем replace(/\/auth$/, '/registrations')
-  url.searchParams.set('kc_action', 'register');
+  url.searchParams.set('prompt', 'create');
 
   return {
     url: url.toString(),

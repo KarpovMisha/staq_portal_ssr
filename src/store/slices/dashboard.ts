@@ -14,7 +14,7 @@ export type DashboardModalPayload = Record<string, any>;
 const STATE_KEY = 'dashboard';
 const initialState = {
   activeModal: {
-    name: 'dashboard setup1',
+    name: 'dashboard setup',
   },
   companyDetails: {
     name: '',

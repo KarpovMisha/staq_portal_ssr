@@ -13,19 +13,16 @@ import styles from './TopBar.module.scss';
 
 export default function TopBar() {
   const pathname = usePathname();
-  const isHomePages = !pathname.startsWith('/dashboard');
-  const isProductionCertificatePage = pathname.startsWith(
-    '/dashboard/certificates/business-information',
-  );;
-  const isDashboardPages = pathname.startsWith(
-    '/dashboard',
-  ) && !isProductionCertificatePage;
   const router = useRouter();
+
+  const isPublicPages = !pathname.startsWith('/dashboard');
+  const isProductionCertificatePage = pathname.startsWith('/dashboard/certificates/business-information');
+  const isDashboardPages = pathname.startsWith('/dashboard') && !isProductionCertificatePage;
 
   return (
     <div className={styles.topBar}>
       <div className={cn(styles.topBar__left, [styles['topBar__left--isBreadcrumb']])}>
-        {isHomePages && <DocsNavigation />}
+        {isPublicPages && <DocsNavigation />}
         {isDashboardPages && <AccountSettings isDashboardPage={isDashboardPages} />}
         {isProductionCertificatePage && <PageTitle title="Production Access" />}
       </div>
@@ -33,7 +30,7 @@ export default function TopBar() {
         <Breadcrumbs />
       </div>
       <div className={styles.topBar__right}>
-        {isHomePages  && <TopBarAuthentication isDashboardPage={isDashboardPages} />}
+        {isPublicPages  && <TopBarAuthentication isDashboardPage={isDashboardPages} />}
         {isDashboardPages && <TopBarActions />}
         {isProductionCertificatePage && (
           <Button

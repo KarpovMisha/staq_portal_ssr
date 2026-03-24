@@ -4,6 +4,7 @@
   --color-gradient-primary: linear-gradient(90deg, #4B69FF -75.25%, #843BD7 -13.65%, #EE3E9C 72.23%, #FF503C 118.62%, #FF9C2E 162.63%);
 
   --bg-primary: #fff;
+  --bg-primary-inverted: #18181B;
   --bg-secondary: #fafafa;
   --bg-tertiary: #A9A9AF;
   --bg-error: #2E0C05;
@@ -14,7 +15,7 @@
   --border-error: #CC3314;
   --border-success: #13BF3E;
   --text-color-primary: #000000;
-  --text-color-primary-reverse: #fff;
+  --text-color-primary-inverted: #fff;
   --text-color-secondary: #3f3f45;
   --text-color-tertiary: #A9A9AF; //??
   --text-color-success: #13BF3E;
@@ -23,11 +24,12 @@
 
 html.dark-theme {
   --bg-primary: #18181B;
+  --bg-primary-inverted: #fff;
   --bg-secondary: #27272A;
   --bg-tertiary: #52525A;
   --bg-success: #053311;
   --text-color-primary: #FFFFFF;
-  --text-color-primary-reverse: #000;
+  --text-color-primary-inverted: #000;
   --text-color-secondary: #E4E4E7;
   --text-color-tertiary: #A9A9AF;
   --border-primary: #3F3F45;

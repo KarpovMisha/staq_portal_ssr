@@ -1,14 +1,13 @@
 import { useState } from 'react';
-// import { Form } from 'react-final-form';
+import { Form } from 'react-final-form';
 
-// import ArrowIcon from 'styles/icon/arrowRight.svg?react';
-// import CompanyDetails from './DashboardSetupSteps/CompanyDetails';
-// import CompanyName from './DashboardSetupSteps/CompanyName';
-// import CompanyTypes from './DashboardSetupSteps/CompanyTypes';
-// import CompanyApis from './DashboardSetupSteps/CompanyApis';
-import styles from './DashboardSetup.module.scss';
 import { ModalBackdrop } from '@/ui/elements';
-// import ModalBackdrop from 'elements/ModalBackdrop/ModalBackdrop';
+import ArrowIcon from '@/ui/icons/arrowRight.svg';
+import CompanyDetails from './DashboardSetupSteps/CompanyDetails';
+import CompanyName from './DashboardSetupSteps/CompanyName';
+import CompanyTypes from './DashboardSetupSteps/CompanyTypes';
+import CompanyApis from './DashboardSetupSteps/CompanyApis';
+import styles from './DashboardSetup.module.scss';
 
 export enum SetupStep {
   COMPANY_NAME = 'companyName',
@@ -20,28 +19,28 @@ export default function DashboardSetup() {
   const steps = Object.values(SetupStep);
   const [currentStep, setCurrentStep] = useState<SetupStep>(SetupStep.COMPANY_NAME);
 
-  // const currentIndex = steps.indexOf(currentStep);
+  const currentIndex = steps.indexOf(currentStep);
 
-  // const nextStep = () => {
-  //   if (currentIndex < steps.length - 1) {
-  //     setCurrentStep(steps[currentIndex + 1]);
-  //   }
-  // };
+  const nextStep = () => {
+    if (currentIndex < steps.length - 1) {
+      setCurrentStep(steps[currentIndex + 1]);
+    }
+  };
 
-  // const prevStep = () => {
-  //   if (currentIndex > 0) {
-  //     setCurrentStep(steps[currentIndex - 1]);
-  //   }
-  // };
+  const prevStep = () => {
+    if (currentIndex > 0) {
+      setCurrentStep(steps[currentIndex - 1]);
+    }
+  };
 
-  // function onSubmit(formData) {
-  //   console.log('formData', formData);
-  // }
+  function onSubmit(formData: any) {
+    console.log('formData', formData);
+  }
 
   return (
     <ModalBackdrop>
       <div className={styles.dashboard_setup}>
-        {/* <Form
+        <Form
           onSubmit={onSubmit}
           render={({ handleSubmit, values }) => {
             console.log(values);
@@ -75,7 +74,7 @@ export default function DashboardSetup() {
               </form>
             );
           }}
-        /> */}
+        />
       </div>
     </ModalBackdrop>
   );

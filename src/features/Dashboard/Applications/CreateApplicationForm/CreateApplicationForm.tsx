@@ -1,6 +1,7 @@
 'use client';
 import { Form } from 'react-final-form';
 import memoize from 'lru-memoize';
+import { useRouter } from 'next/navigation';
 // import { useNavigate } from 'react-router';
 import cn from 'classnames';
 
@@ -18,7 +19,6 @@ import AuthIcon from '@/ui/icons/auth_gradient.svg';
 import { createValidator, required } from '@/ui/utils/validation';
 import styles from './CreateApplicationForm.module.scss';
 import { Button } from '@/ui/elements';
-import { useRouter } from 'next/navigation';
 import { FormInput, FormRadio, FormCheckbox } from '@/ui/elements/Form';
 
 const data = [

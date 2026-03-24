@@ -1,6 +1,7 @@
 'use client';
 import { useEffect } from 'react';
 import Link from 'next/link';
+import cn from 'classnames';
 
 import SearchIcon from '@/ui/icons/search.svg';
 import ApiIcon from '@/ui/icons/api_reference.svg';
@@ -8,9 +9,9 @@ import SupportIcon from '@/ui/icons/support.svg';
 import ApiSidebarItem from './ApiSidebarItem';
 import { useAppDispatch } from '@/store/hooks';
 import { dashboardActions } from '@/store/slices/dashboard';
-import styles from './ApiSidebar.module.scss';
 import { useApiReferencesQuery } from '@/hooks/useApiReferencesQuery';
 import { ApiVersionSwitcher } from '../ApiVersionSwitcher/ApiVersionSwitcher';
+import styles from './ApiSidebar.module.scss';
 
 
 export default function ApiSidebar() {
@@ -32,47 +33,36 @@ export default function ApiSidebar() {
 
   return (
     <div className={styles.api_sidebar}>
-      <div className={styles.api_sidebar__links}>
+      <div className={styles.api_sidebar__container}>
         <div
           className={styles.api_sidebar__search}
-          style={{ color: 'white' }}
           onClick={() => dispatch(dashboardActions.setActiveModalDetails({ name: 'api search' }))}
         >
           <SearchIcon />
           <div>Quick search...</div>
           <span>⌘K</span>
         </div>
+
         <ApiVersionSwitcher />
-        <div
-          className={styles.api_sidebar__link}
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            paddingInlineStart: '12px',
-            alignItems: 'flex-start',
-          }}
-        >
-          <div style={{ color: 'white' }}>Overview</div>
-          <div>
-            <Link style={{ color: '#A9A9AF'}} href="/api-references/api-overview">API Overview</Link>
+
+        <div className={styles.api_sidebar__section}>
+          <div className={cn(styles['api_sidebar__section--title'])}><ApiIcon /> Overview</div>
+          <div className={cn(styles['api_sidebar__section--doc'])}>
+            <Link href="/api-references/api-overview">API Overview</Link>
           </div>
-          <div>
-            <Link style={{ color: '#A9A9AF'}}href="/api-references/authentication">Authentication</Link>
+          <div className={cn(styles['api_sidebar__section--doc'])}>
+            <Link href="/api-references/authentication">Authentication</Link>
           </div>
         </div>
+
         {apisList?.map((c) => {
+          const Icon = c.icon;
           return (
             <div
-              className={styles.api_sidebar__link}
+              className={styles.api_sidebar__section}
               key={c.groupName}
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                paddingInlineStart: '12px',
-                alignItems: 'flex-start',
-              }}
             >
-              <div style={{ color: 'white' }}>{c.groupName}</div>
+              <div className={cn(styles['api_sidebar__section--title'])}><Icon />{c.groupName}</div>
               <div style={{ width: '100%' }}>
                 {c.childs?.map((child) => <ApiSidebarItem key={child.name} item={child} />)}
               </div>

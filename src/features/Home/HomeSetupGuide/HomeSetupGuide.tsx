@@ -28,7 +28,9 @@ export default function HomeSetupGuide() {
           </div>
           <div
             className={styles.guide_steps__link}
-            // onClick={() => keycloak.register()}
+            onClick={() => {
+              window.location.href = `/api/auth/signup?returnTo=/`;
+            }}
           >
             <div>
               Sign up <Icon name="ArrowRight" />

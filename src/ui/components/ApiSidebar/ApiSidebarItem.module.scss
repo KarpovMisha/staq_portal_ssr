@@ -1,17 +1,29 @@
 .api_group {
+  width: 100%;
   padding-block-end: 2px;
 
-  &__name {
+  &__doc {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 4px 8px;
+    padding-inline: 8px;
+    padding-block: 4px;
+    border-radius: 4px;
+
+    &:hover {
+      background: var(--bg-secondary);
+    }
+
+    a {
+      width: 100%;
+      color: var(--text-color-tertiary);
+    }
 
     svg {
       transform: rotate(-90deg);
       path {
-        fill: var(--text-color-primary);
+        fill: var(--text-color-tertiary);
       }
     }
 
@@ -26,11 +38,35 @@
 
   &__children {
     display: none;
-    padding: 4px 8px;
+    // padding: 4px 8px;
 
     &--open {
-      display: block;
-      animation: appear 0.2s
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      animation: appear 0.2s;
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      padding-inline: 8px;
+      padding-block: 4px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      gap: 10px;
+
+      span {
+        max-inline-size: 38px;
+        display: flex;
+        align-items: center;
+      }
+
+      &:hover {
+        background: var(--bg-secondary);
+      }
     }
   }
 }

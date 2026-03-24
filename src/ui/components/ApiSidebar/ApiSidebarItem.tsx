@@ -24,16 +24,16 @@ export default function ApiSidebarItem({ item }: ApiSidebarItemProps) {
 
   function ApiNavItem() {
     if (isSamePage && hash) {
-      return <a style={{ color: '#A9A9AF'}} href={hash}>{name}</a>;
+      return <a href={hash}>{name}</a>;
     }
-    return <Link style={{ color: '#A9A9AF'}} href={`${path}${hash ?? ''}`}>{name}</Link>;
+    return <Link href={`${path}${hash ?? ''}`}>{name}</Link>;
   }
 
   return (
     <div className={styles.api_group}>
       <div
-        className={cn(styles.api_group__name, {
-          [styles['api_group__name--open']]: isSamePage,
+        className={cn(styles.api_group__doc, {
+          [styles['api_group__doc--open']]: isSamePage,
         })}
       >
         <ApiNavItem />
@@ -48,20 +48,13 @@ export default function ApiSidebarItem({ item }: ApiSidebarItemProps) {
           const isGet = api.hash.toLowerCase().includes('/get/');
           const isPost = api.hash.toLowerCase().includes('/post/');
           return (
-            <div
-              key={api.name}
-              style={{
-                display: 'grid',
-                gridTemplateColumns: '40px 1fr',
-                alignItems: 'center',
-              }}
-            >
-              <div>
+            <a key={api.name} href={api.hash}>
+              <span>
                 {isGet && <GetIcon />}
                 {isPost && <PostIcon />}
-              </div>
-              <a href={api.hash}>{api.name}</a>
-            </div>
+              </span>
+              {api.name}
+            </a>
           );
         })}
       </div>

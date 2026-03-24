@@ -16,6 +16,11 @@
   cursor: pointer;
   width: fit-content;
 
+  &:hover {
+    background: var(--bg-primary-inverted);
+    color: var(--text-color-primary-inverted);
+  }
+
   &[disabled] {
     border-color: transparent;
     background: var(--bg-tertiary);
