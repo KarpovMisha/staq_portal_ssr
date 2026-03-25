@@ -20,7 +20,7 @@ export default function ApiSidebarItem({ item }: ApiSidebarItemProps) {
   const { path, hash, name } = item;
 
   const pathname = usePathname();
-  const isSamePage = location.pathname === item.path;
+  const isSamePage = pathname === item.path;
 
   function ApiNavItem() {
     if (isSamePage && hash) {
