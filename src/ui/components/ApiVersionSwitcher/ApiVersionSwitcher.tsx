@@ -12,9 +12,13 @@ export function ApiVersionSwitcher() {
 
   if (!currentApi) return null;
 
+  const versions = [{ version: 1 }, ...currentApi.versions].filter(
+    (item, index, arr) => arr.findIndex((x) => x.version === item.version) === index
+  );
+
   return (
     <div style={{ display: 'flex', gap: 8 }}>
-      {currentApi.versions.map((item) => (
+      {versions.map((item) => (
         <button
           key={item.version}
           onClick={() => dispatch(apiReferencesActions.setSelectedVersion(item.version))}

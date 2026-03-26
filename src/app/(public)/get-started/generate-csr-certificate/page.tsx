@@ -5,7 +5,7 @@ import { DocsFooter, PrevNextNavigation } from '@/ui/components';
 
 export default function GenerateCSR() {
   return (
-    <>
+    <div className="get-started-content">
       <div className="typography">
         <CertificateDoc />
         <PrevNextNavigation
@@ -17,6 +17,6 @@ export default function GenerateCSR() {
         />
       </div>
       <DocsFooter />
-    </>
+    </div>
   );
 }

@@ -31,15 +31,14 @@ const apiReferenceSlice = createSlice({
   reducers: {
     setCurrentApi(state, action: PayloadAction<ApiChild | null>) {
       state.currentApi = action.payload;
-
       if (action.payload) {
-        const versionExists = action.payload.versions.some(
-          (item) => item.version === state.selectedVersion
-        );
+        // const versionExists = action.payload.versions.some(
+        //   (item) => item.version === state.selectedVersion
+        // );
 
-        if (!versionExists) {
+        // if (!versionExists) {
+        // }
           state.selectedVersion = action.payload.defaultVersion;
-        }
       } else {
         state.selectedVersion = null;
       }

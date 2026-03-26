@@ -104,6 +104,35 @@ export const apisList = [
           },
         ],
       },
+      {
+        name: 'Verification',
+        description: `API to initiate and manage enrollment process for a new Individual Customers.`,
+        path: '/api-references/verification',
+        hash: '#description/introduction',
+        defaultVersion: 2,
+        versions: [
+          {
+            version: 1,
+            urlSpecification: 'https://qa-api.staq.tech/api/v1/partner/kyc/open-api/api-docs.yaml',
+          },
+          {
+            version: 2,
+            urlSpecification: 'https://qa-api.staq.tech/api/v2/partner/kyc/open-api/api-docs.yaml',
+          }
+        ],
+        children: [
+          {
+            name: 'Get all KYCs',
+            description: 'Retrieves KYCs initiated by the application and associated customers',
+            hash: '#api-1/tag/customers/GET/partner/kyc/customers',
+          },
+          {
+            name: 'Create a KYC',
+            description: `Creates a new KYC. Payload should application/json. The payload content should be formed according to the metadata descriprion retirned by /meta/steps method.`,
+            hash: '#api-1/tag/customers/POST/partner/kyc/customers',
+          },
+        ],
+      },
     ],
   },
   {
@@ -114,6 +143,330 @@ export const apisList = [
         name: 'Accounts',
         description: `API allows managing Bank accounts for a third-party partner application`,
         path: '/api-references/accounts',
+        hash: '#description/introduction',
+        defaultVersion: 1,
+        versions: [
+          {
+            version: 1,
+            urlSpecification: 'https://qa-api.staq.tech/api/v1/partner/accounts/open-api/api-docs.yaml',
+          }
+        ],
+        children: [
+          {
+            name: 'List all customers',
+            description: `Returns all available for the partner customers and their accounts`,
+            hash: '#api-1/tag/customers/GET/customers',
+          },
+          {
+            name: 'Create an account',
+            description: `Opens a new account for the customer`,
+            hash: '#tag/accounts/get/customers/{customerId}/accounts',
+          },
+        ],
+      },
+      {
+        name: 'Virtual IBAN',
+        description: `API allows managing Bank accounts for a third-party partner application`,
+        path: '/api-references/accounts',
+        hash: '#description/introduction',
+        defaultVersion: 1,
+        versions: [
+          {
+            version: 1,
+            urlSpecification: 'https://qa-api.staq.tech/api/v1/partner/accounts/open-api/api-docs.yaml',
+          }
+        ],
+        children: [
+          {
+            name: 'List all customers',
+            description: `Returns all available for the partner customers and their accounts`,
+            hash: '#api-1/tag/customers/GET/customers',
+          },
+          {
+            name: 'Create an account',
+            description: `Opens a new account for the customer`,
+            hash: '#tag/accounts/get/customers/{customerId}/accounts',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    groupName: 'Payments',
+    icon: ApiIcon,
+    childs: [
+      {
+        name: 'Transfers',
+        description: `API allows managing Bank accounts for a third-party partner application`,
+        path: '/api-references/payments',
+        hash: '#description/introduction',
+        defaultVersion: 1,
+        versions: [
+          {
+            version: 1,
+            urlSpecification: 'https://qa-api.staq.tech/api/v1/partner/accounts/open-api/api-docs.yaml',
+          }
+        ],
+        children: [
+          {
+            name: 'List all customers',
+            description: `Returns all available for the partner customers and their accounts`,
+            hash: '#api-1/tag/customers/GET/customers',
+          },
+          {
+            name: 'Create an account',
+            description: `Opens a new account for the customer`,
+            hash: '#tag/accounts/get/customers/{customerId}/accounts',
+          },
+        ],
+      },
+      {
+        name: 'Remittances',
+        description: `API allows managing Bank accounts for a third-party partner application`,
+        path: '/api-references/payments',
+        hash: '#description/introduction',
+        defaultVersion: 1,
+        versions: [
+          {
+            version: 1,
+            urlSpecification: 'https://qa-api.staq.tech/api/v1/partner/accounts/open-api/api-docs.yaml',
+          }
+        ],
+        children: [
+          {
+            name: 'List all customers',
+            description: `Returns all available for the partner customers and their accounts`,
+            hash: '#api-1/tag/customers/GET/customers',
+          },
+          {
+            name: 'Create an account',
+            description: `Opens a new account for the customer`,
+            hash: '#tag/accounts/get/customers/{customerId}/accounts',
+          },
+        ],
+      },
+      {
+        name: 'CliQ Payments',
+        description: `API allows managing Bank accounts for a third-party partner application`,
+        path: '/api-references/payments',
+        hash: '#description/introduction',
+        defaultVersion: 1,
+        versions: [
+          {
+            version: 1,
+            urlSpecification: 'https://qa-api.staq.tech/api/v1/partner/accounts/open-api/api-docs.yaml',
+          }
+        ],
+        children: [
+          {
+            name: 'List all customers',
+            description: `Returns all available for the partner customers and their accounts`,
+            hash: '#api-1/tag/customers/GET/customers',
+          },
+          {
+            name: 'Create an account',
+            description: `Opens a new account for the customer`,
+            hash: '#tag/accounts/get/customers/{customerId}/accounts',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    groupName: 'Cards & Disputes',
+    icon: ApiIcon,
+    childs: [
+      {
+        name: 'Cards',
+        description: `API allows managing Bank accounts for a third-party partner application`,
+        path: '/api-references/disputes',
+        hash: '#description/introduction',
+        defaultVersion: 1,
+        versions: [
+          {
+            version: 1,
+            urlSpecification: 'https://qa-api.staq.tech/api/v1/partner/accounts/open-api/api-docs.yaml',
+          }
+        ],
+        children: [
+          {
+            name: 'List all customers',
+            description: `Returns all available for the partner customers and their accounts`,
+            hash: '#api-1/tag/customers/GET/customers',
+          },
+          {
+            name: 'Create an account',
+            description: `Opens a new account for the customer`,
+            hash: '#tag/accounts/get/customers/{customerId}/accounts',
+          },
+        ],
+      },
+      {
+        name: 'Disputes',
+        description: `API allows managing Bank accounts for a third-party partner application`,
+        path: '/api-references/disputes',
+        hash: '#description/introduction',
+        defaultVersion: 1,
+        versions: [
+          {
+            version: 1,
+            urlSpecification: 'https://qa-api.staq.tech/api/v1/partner/accounts/open-api/api-docs.yaml',
+          }
+        ],
+        children: [
+          {
+            name: 'List all customers',
+            description: `Returns all available for the partner customers and their accounts`,
+            hash: '#api-1/tag/customers/GET/customers',
+          },
+          {
+            name: 'Create an account',
+            description: `Opens a new account for the customer`,
+            hash: '#tag/accounts/get/customers/{customerId}/accounts',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    groupName: 'Lending',
+    icon: ApiIcon,
+    childs: [
+      {
+        name: 'BNPL',
+        description: `API allows managing Bank accounts for a third-party partner application`,
+        path: '/api-references/lending',
+        hash: '#description/introduction',
+        defaultVersion: 1,
+        versions: [
+          {
+            version: 1,
+            urlSpecification: 'https://qa-api.staq.tech/api/v1/partner/accounts/open-api/api-docs.yaml',
+          }
+        ],
+        children: [
+          {
+            name: 'List all customers',
+            description: `Returns all available for the partner customers and their accounts`,
+            hash: '#api-1/tag/customers/GET/customers',
+          },
+          {
+            name: 'Create an account',
+            description: `Opens a new account for the customer`,
+            hash: '#tag/accounts/get/customers/{customerId}/accounts',
+          },
+        ],
+      },
+      {
+        name: 'Loans',
+        description: `API allows managing Bank accounts for a third-party partner application`,
+        path: '/api-references/lending',
+        hash: '#description/introduction',
+        defaultVersion: 1,
+        versions: [
+          {
+            version: 1,
+            urlSpecification: 'https://qa-api.staq.tech/api/v1/partner/accounts/open-api/api-docs.yaml',
+          }
+        ],
+        children: [
+          {
+            name: 'List all customers',
+            description: `Returns all available for the partner customers and their accounts`,
+            hash: '#api-1/tag/customers/GET/customers',
+          },
+          {
+            name: 'Create an account',
+            description: `Opens a new account for the customer`,
+            hash: '#tag/accounts/get/customers/{customerId}/accounts',
+          },
+        ],
+      },
+      {
+        name: 'Scoring',
+        description: `API allows managing Bank accounts for a third-party partner application`,
+        path: '/api-references/lending',
+        hash: '#description/introduction',
+        defaultVersion: 1,
+        versions: [
+          {
+            version: 1,
+            urlSpecification: 'https://qa-api.staq.tech/api/v1/partner/accounts/open-api/api-docs.yaml',
+          }
+        ],
+        children: [
+          {
+            name: 'List all customers',
+            description: `Returns all available for the partner customers and their accounts`,
+            hash: '#api-1/tag/customers/GET/customers',
+          },
+          {
+            name: 'Create an account',
+            description: `Opens a new account for the customer`,
+            hash: '#tag/accounts/get/customers/{customerId}/accounts',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    groupName: 'Developer tools',
+    icon: ApiIcon,
+    childs: [
+      {
+        name: 'Data',
+        description: `API allows managing Bank accounts for a third-party partner application`,
+        path: '/api-references/tools',
+        hash: '#description/introduction',
+        defaultVersion: 1,
+        versions: [
+          {
+            version: 1,
+            urlSpecification: 'https://qa-api.staq.tech/api/v1/partner/accounts/open-api/api-docs.yaml',
+          }
+        ],
+        children: [
+          {
+            name: 'List all customers',
+            description: `Returns all available for the partner customers and their accounts`,
+            hash: '#api-1/tag/customers/GET/customers',
+          },
+          {
+            name: 'Create an account',
+            description: `Opens a new account for the customer`,
+            hash: '#tag/accounts/get/customers/{customerId}/accounts',
+          },
+        ],
+      },
+      {
+        name: 'Events',
+        description: `API allows managing Bank accounts for a third-party partner application`,
+        path: '/api-references/tools',
+        hash: '#description/introduction',
+        defaultVersion: 1,
+        versions: [
+          {
+            version: 1,
+            urlSpecification: 'https://qa-api.staq.tech/api/v1/partner/accounts/open-api/api-docs.yaml',
+          }
+        ],
+        children: [
+          {
+            name: 'List all customers',
+            description: `Returns all available for the partner customers and their accounts`,
+            hash: '#api-1/tag/customers/GET/customers',
+          },
+          {
+            name: 'Create an account',
+            description: `Opens a new account for the customer`,
+            hash: '#tag/accounts/get/customers/{customerId}/accounts',
+          },
+        ],
+      },
+      {
+        name: 'Dictionaries',
+        description: `API allows managing Bank accounts for a third-party partner application`,
+        path: '/api-references/tools',
         hash: '#description/introduction',
         defaultVersion: 1,
         versions: [

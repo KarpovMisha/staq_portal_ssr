@@ -22,8 +22,8 @@ export default function TopBar() {
   return (
     <div className={styles.topBar}>
       <div className={cn(styles.topBar__left, [styles['topBar__left--isBreadcrumb']])}>
-        {isPublicPages && <DocsNavigation />}
-        {isDashboardPages && <AccountSettings isDashboardPage={isDashboardPages} />}
+        {isPublicPages && <AccountSettings page={'docs'} />}
+        {isDashboardPages && <AccountSettings page={'dashboard'} />}
         {isProductionCertificatePage && <PageTitle title="Production Access" />}
       </div>
       <div className={styles.topBar__middle}>

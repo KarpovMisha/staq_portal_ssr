@@ -1,4 +1,3 @@
-
 'use client';
 import cn from 'classnames';
 import Link from 'next/link';
@@ -9,7 +8,7 @@ import CertificateIcon from '@/ui/icons/certificates.svg';
 import ProductIcon from '@/ui/icons/products.svg';
 import SettingsIcon from '@/ui/icons/settings.svg';
 import ApiIcon from '@/ui/icons/api_reference.svg';
-import SupportIcon from '@/ui/icons/support.svg';
+import DocsIcon from '@/ui/icons/docs.svg';
 
 import { useAuth } from '../../auth-provider';
 import styles from './DashboardSidebar.module.scss';
@@ -81,12 +80,15 @@ export default function DashboardSidebar() {
       </div>
 
       <div className={styles.dashboardSidebar__actions}>
-        <Link href="/api-references/identity" className={styles.dashboardSidebar__bottom_link}>
-            <ApiIcon />
-            <span>API Reference</span>
+        <Link
+          href="/api-references/api-overview"
+          className={styles.dashboardSidebar__bottom_link}
+        >
+          <ApiIcon />
+          <span>API Reference</span>
         </Link>
         <Link href="/" className={styles.dashboardSidebar__bottom_link}>
-            <SupportIcon /> <span>Developer Docs</span>
+          <DocsIcon /> <span>Docs</span>
         </Link>
       </div>
     </div>

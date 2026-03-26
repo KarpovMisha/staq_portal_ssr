@@ -3,14 +3,14 @@ import { useEffect } from 'react';
 import Link from 'next/link';
 import cn from 'classnames';
 
+import { useApiReferencesQuery } from '@/hooks/useApiReferencesQuery';
+import { dashboardActions } from '@/store/slices/dashboard';
+import { useAppDispatch } from '@/store/hooks';
 import SearchIcon from '@/ui/icons/search.svg';
 import ApiIcon from '@/ui/icons/api_reference.svg';
-import SupportIcon from '@/ui/icons/support.svg';
-import ApiSidebarItem from './ApiSidebarItem';
-import { useAppDispatch } from '@/store/hooks';
-import { dashboardActions } from '@/store/slices/dashboard';
-import { useApiReferencesQuery } from '@/hooks/useApiReferencesQuery';
+import DocsIcon from '@/ui/icons/docs.svg';
 import { ApiVersionSwitcher } from '../ApiVersionSwitcher/ApiVersionSwitcher';
+import ApiSidebarItem from './ApiSidebarItem';
 import styles from './ApiSidebar.module.scss';
 
 
@@ -42,9 +42,7 @@ export default function ApiSidebar() {
           <div>Quick search...</div>
           <span>⌘K</span>
         </div>
-
         <ApiVersionSwitcher />
-
         <div className={styles.api_sidebar__section}>
           <div className={cn(styles['api_sidebar__section--title'])}><ApiIcon /> Overview</div>
           <div className={cn(styles['api_sidebar__section--doc'])}>
@@ -52,6 +50,24 @@ export default function ApiSidebar() {
           </div>
           <div className={cn(styles['api_sidebar__section--doc'])}>
             <Link href="/api-references/authentication">Authentication</Link>
+          </div>
+          <div className={cn(styles['api_sidebar__section--doc'])}>
+            <Link href="/api-references/api-structure">API structure & conventions</Link>
+          </div>
+          <div className={cn(styles['api_sidebar__section--doc'])}>
+            <Link href="/api-references/environment">Environment</Link>
+          </div>
+          <div className={cn(styles['api_sidebar__section--doc'])}>
+            <Link href="/api-references/rate-limits">Rate limits & pagination</Link>
+          </div>
+          <div className={cn(styles['api_sidebar__section--doc'])}>
+            <Link href="/api-references/errors">Errors & responses</Link>
+          </div>
+          <div className={cn(styles['api_sidebar__section--doc'])}>
+            <Link href="/api-references/postman-collection">Postman collection</Link>
+          </div>
+          <div className={cn(styles['api_sidebar__section--doc'])}>
+            <Link href="/api-references/webhooks">Webhooks</Link>
           </div>
         </div>
 
@@ -74,13 +90,10 @@ export default function ApiSidebar() {
       <div className={styles.api_sidebar__actions}>
         <Link href="/">
           <div className={styles.api_sidebar__bottom_link}>
-            <ApiIcon />
+            <DocsIcon />
             <span>Docs</span>
           </div>
         </Link>
-        <div className={styles.api_sidebar__bottom_link}>
-          <SupportIcon /> <span>Support</span>
-        </div>
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ import { DocsFooter, PrevNextNavigation } from '@/ui/components';
 
 export default function page() {
   return (
-    <>
+    <div className="get-started-content">
       <div className="typography">
         <AuthDoc />
         <PrevNextNavigation
@@ -16,6 +16,6 @@ export default function page() {
           />
       </div>
       <DocsFooter />
-    </>
+    </div>
   )
 }

@@ -8,7 +8,9 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
-    // align-items: stretch;
+    @include media.breakpoint('desktop') {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   &__card {

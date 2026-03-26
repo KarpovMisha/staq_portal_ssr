@@ -16,7 +16,7 @@ export default function TopBarAuthentication({isDashboardPage}: {isDashboardPage
           className={styles.topBarAuthentication__loggedIn}
         >
           <Link href="/dashboard" style={{ color: 'white' }}>Dashboard</Link>
-          <AccountSettings isDashboardPage={isDashboardPage} />
+          <AccountSettings page="avatar" />
         </div>
       ) : (
         <ul className={styles.topBarAuthentication__buttons}>

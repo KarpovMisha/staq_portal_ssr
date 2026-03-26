@@ -20,6 +20,11 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 2px;
 
+  @include media.breakpoint('desktop') {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
   &__name {
     max-inline-size: 5rem;
     background: var(--color-gradient-primary);

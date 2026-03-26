@@ -1,4 +1,5 @@
-// @use '@/ui/styles/mixins/media' as media;
+@use '../abstracts/media' as mediaLocal;
+
 // @use '@/ui/styles/mixins/fonts' as *;
 
 *,
@@ -8,8 +9,7 @@
 }
 
 html {
-  --scrollbarBG: transparent;
-  --thumbBG: #787a84;
+  --scrollbar-size: 8px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -17,24 +17,30 @@ html {
   font-size: 10px;
   scroll-behavior: smooth;
   background-color: var(--bg-primary);
-  scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+}
+
+html,
+div {
+  scrollbar-color: var(--scrollbar-thumb-bg) var(--scrollbar-track-bg);
   scrollbar-width: thin;
 }
 
-::-webkit-scrollbar {
-  width: 3px;
-  height: 3px;
-  border: 1px solid var(--scrollbarBG);
+html::-webkit-scrollbar,
+div::-webkit-scrollbar {
+  width: var(--scrollbar-size);
+  height: var(--scrollbar-size);
 }
 
-::-webkit-scrollbar-track {
-  background: var(--scrollbarBG);
+html::-webkit-scrollbar-track,
+div::-webkit-scrollbar-track {
+  background: var(--scrollbar-track-bg);
 }
 
-::-webkit-scrollbar-thumb {
-  border: 3px solid var(--scrollbarBG);
-  border-radius: 4px;
-  background-color: var(--thumbBG);
+html::-webkit-scrollbar-thumb,
+div::-webkit-scrollbar-thumb {
+  border: 2px solid var(--scrollbar-track-bg);
+  border-radius: 999px;
+  background-color: var(--scrollbar-thumb-bg);
 }
 
 #root {
@@ -55,10 +61,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: transparent;
-}
-
-body::-webkit-scrollbar {
-  width: 15px;
 }
 
 h1 {
@@ -158,6 +160,10 @@ main {
   width: 100%;
   padding-inline: 90px;
   padding-block: 40px;
+
+  @include mediaLocal.breakpoint('desktop') {
+    padding-inline: 40px;
+  }
 }
 
 .main_grid {
@@ -177,6 +183,10 @@ main {
     height: 100%;
     position: relative;
   }
+}
+
+.get-started-content {
+  max-inline-size: 730px;
 }
 
 .response-table {

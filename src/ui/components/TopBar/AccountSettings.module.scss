@@ -1,7 +1,6 @@
 .account_settings {
 
   &__trigger {
-    background: var(--bg-secondary);
     color: var(--text-color-primary);
     display: flex;
     align-items: center;
@@ -33,6 +32,14 @@
     user-select: none;
     justify-self: center;
     border: 1px solid var(--border-primary);
+
+    &--docs {
+      background: transparent;
+      border-radius: initial;
+      border: none;
+      padding-right: 6px;
+      border-right: 1px solid var(--border-primary);
+    }
   }
 
   &__arrow {

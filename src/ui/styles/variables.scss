@@ -1,7 +1,9 @@
 :root {
   --sidebar-width: 280px;
-  --content-width: 972px;
+  --main-content-width: 972px;
   --color-gradient-primary: linear-gradient(90deg, #4B69FF -75.25%, #843BD7 -13.65%, #EE3E9C 72.23%, #FF503C 118.62%, #FF9C2E 162.63%);
+  --scrollbar-track-bg: rgb(9 30 66 / 0.08);
+  --scrollbar-thumb-bg: #787a84;
 
   --bg-primary: #fff;
   --bg-primary-inverted: #18181B;

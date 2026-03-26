@@ -40,6 +40,8 @@
     padding: 16px;
     position: sticky;
     top: 0;
+    overflow-y: auto;
+    max-height: calc(100vh - 130px);
   }
 
   &__section {

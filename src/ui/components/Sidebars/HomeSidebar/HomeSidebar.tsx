@@ -1,15 +1,12 @@
 'use client';
-import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import cn from 'classnames';
 
-// import { SidebarMenu } from 'components/SidebarMenu/SidebarMenu';
-import HomeIcon from '@/ui/icons/home.svg';
+import { useIsLinkActive } from '@/hooks/useIsLinkActive';
+import { SidebarMenu } from '@/ui/components';
 import ApiIcon from '@/ui/icons/applications.svg';
 import RocketIcon from '@/ui/icons/rocket.svg';
-import SupportIcon from '@/ui/icons/support.svg';
-import { SidebarMenu } from '@/ui/components';
-import { useIsLinkActive } from '@/hooks/useIsLinkActive';
+import HomeIcon from '@/ui/icons/home.svg';
 import styles from './HomeSidebar.module.scss';
 
 export default function HomeSidebar() {
@@ -66,9 +63,6 @@ export default function HomeSidebar() {
         >
           <ApiIcon />
           <span>API Reference</span>
-        </Link>
-        <Link href="/support" className={styles.home_sidebar__bottom_link}>
-          <SupportIcon /> <span>Support</span>
         </Link>
       </div>
     </div>
