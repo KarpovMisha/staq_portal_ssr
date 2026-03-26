@@ -6,10 +6,10 @@ import cn from 'classnames';
 // import HomeIcon from 'styles/icon/dashboard/home.svg';
 import ArrowIcon from '@/ui/icons/arrow.svg';
 import LogoIcon from '@/ui/icons/staq_app_logo.svg';
-import DocsIcon from '@/ui/icons/docs.svg';
+import DocsIcon from '@/ui/icons/developer_docs.svg';
 import ApiIcon from '@/ui/icons/terminal.svg';
 import ArrowDownIcon from '@/ui/icons/downArrow.svg';
-import LogOutIcon from '@/ui/icons/logout.svg';
+import LogInIcon from '@/ui/icons/login.svg';
 // import Switcher from 'components/Switcher';
 import SearchIcon from '@/ui/icons/search.svg';
 // import { useAppDispatch } from 'hooks/useRedux';
@@ -68,35 +68,41 @@ export default function DocsNavigation() {
         )}
         content={({ close }) => (
           <div className={styles.docs_navigation__body}>
-            <div
-              className={cn(
-                styles.docs_navigation__row,
-                styles['docs_navigation__row--devider'],
-              )}
-            >
-              <NavItem
-                href="/"
-                // onClick={close}
+            {isApiReferencesPage && (
+              <div
+                className={cn(
+                  styles.docs_navigation__row,
+                  styles['docs_navigation__row--devider'],
+                )}
               >
-                <div>
-                  <DocsIcon /> <span>Developer Docs</span>
-                </div>
-                <div className={styles.docs_navigation__link}>
-                  <ArrowDownIcon />
-                </div>
-              </NavItem>
-              <NavItem
-                href="/api-references/api-overview"
-                // onClick={close}
+                <NavItem href="/">
+                  <div>
+                    <DocsIcon /> <span>Developer Docs</span>
+                  </div>
+                  <div className={styles.docs_navigation__link}>
+                    <ArrowDownIcon />
+                  </div>
+                </NavItem>
+              </div>
+            )}
+            {!isApiReferencesPage && (
+              <div
+                className={cn(
+                  styles.docs_navigation__row,
+                  styles['docs_navigation__row--devider'],
+                )}
               >
-                <div>
-                  <ApiIcon /> <span>API Reference</span>
-                </div>
-                <div className={styles.docs_navigation__link}>
-                  <ArrowDownIcon />
-                </div>
-              </NavItem>
-            </div>
+                <NavItem href="/api-references/api-overview">
+                  <div>
+                    <ApiIcon /> <span>API Reference</span>
+                  </div>
+                  <div className={styles.docs_navigation__link}>
+                    <ArrowDownIcon />
+                  </div>
+                </NavItem>
+              </div>
+            )}
+
             <div
               className={cn(
                 styles.docs_navigation__row,
@@ -110,15 +116,40 @@ export default function DocsNavigation() {
                 </div>
               </div>
             </div>
-            <div className={styles.docs_navigation__row}>
+            <div
+              className={cn(
+                styles.docs_navigation__row,
+                styles['docs_navigation__row--devider'],
+              )}
+            >
               <div
                 className={styles.docs_navigation__item}
                 onClick={() => {
-                  window.location.href = '/api/auth/logout';
+                  window.location.href = '/api/auth/login';
                 }}
               >
-                <div>Logout</div>
-                <LogOutIcon />
+                <div>Log in</div>
+                <LogInIcon />
+              </div>
+            </div>
+            <div
+              className={cn(
+                styles.docs_navigation__row,
+                styles['docs_navigation__row--create'],
+              )}
+            >
+              <div
+                className={styles.docs_navigation__item}
+                onClick={() => {
+                  window.location.href = `/api/auth/signup?returnTo=/`;
+                }}
+              >
+                <div>
+                  <span>Create account</span>
+                </div>
+                <div className={styles.docs_navigation__link}>
+                  <ArrowDownIcon />
+                </div>
               </div>
             </div>
           </div>

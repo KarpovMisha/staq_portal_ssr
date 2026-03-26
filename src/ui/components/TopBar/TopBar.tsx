@@ -2,6 +2,7 @@
 import { usePathname, useRouter } from 'next/navigation';
 import cn from 'classnames';
 
+import { useAuth } from '../auth-provider';
 import { Breadcrumbs, Button } from '@/ui/elements';
 import CloseIcon from '@/ui/icons/close.svg';
 import TopBarAuthentication from './TopBarAuthentication';
@@ -14,7 +15,7 @@ import styles from './TopBar.module.scss';
 export default function TopBar() {
   const pathname = usePathname();
   const router = useRouter();
-
+  const { authenticated } = useAuth();
   const isPublicPages = !pathname.startsWith('/dashboard');
   const isProductionCertificatePage = pathname.startsWith('/dashboard/certificates/business-information');
   const isDashboardPages = pathname.startsWith('/dashboard') && !isProductionCertificatePage;
@@ -22,9 +23,10 @@ export default function TopBar() {
   return (
     <div className={styles.topBar}>
       <div className={cn(styles.topBar__left, [styles['topBar__left--isBreadcrumb']])}>
-        {isPublicPages && <AccountSettings page={'docs'} />}
-        {isDashboardPages && <AccountSettings page={'dashboard'} />}
-        {isProductionCertificatePage && <PageTitle title="Production Access" />}
+        {!authenticated && <DocsNavigation />}
+        {authenticated && isPublicPages && <AccountSettings page={'docs'} />}
+        {authenticated && isDashboardPages && <AccountSettings page={'dashboard'} />}
+        {authenticated && isProductionCertificatePage && <PageTitle title="Production Access" />}
       </div>
       <div className={styles.topBar__middle}>
         <Breadcrumbs />

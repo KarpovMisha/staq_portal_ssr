@@ -5,6 +5,7 @@
   --scrollbar-track-bg: rgb(9 30 66 / 0.08);
   --scrollbar-thumb-bg: #787a84;
 
+  --surface-primary: #fff;
   --bg-primary: #fff;
   --bg-primary-inverted: #18181B;
   --bg-secondary: #fafafa;
@@ -25,6 +26,7 @@
 }
 
 html.dark-theme {
+  --surface-primary: #2C2C2F;
   --bg-primary: #18181B;
   --bg-primary-inverted: #fff;
   --bg-secondary: #27272A;

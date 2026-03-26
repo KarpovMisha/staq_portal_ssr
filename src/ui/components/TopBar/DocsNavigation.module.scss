@@ -31,8 +31,9 @@
   &__body {
     border: 1px solid var(--border-primary);
     border-radius: 12px;
-    background: var(--bg-primary);
+    background: var(--surface-primary);
     color: var(--text-color-primary);
+    overflow: hidden;
   }
 
   &__row {
@@ -47,6 +48,10 @@
 
     &--devider {
       border-bottom: 1px solid var(--border-primary);
+    }
+
+    &--create {
+      background: var(--color-gradient-primary);
     }
   }
 

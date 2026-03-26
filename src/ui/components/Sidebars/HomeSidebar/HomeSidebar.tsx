@@ -4,7 +4,7 @@ import cn from 'classnames';
 
 import { useIsLinkActive } from '@/hooks/useIsLinkActive';
 import { SidebarMenu } from '@/ui/components';
-import ApiIcon from '@/ui/icons/applications.svg';
+import ApiIcon from '@/ui/icons/api_reference.svg';
 import RocketIcon from '@/ui/icons/rocket.svg';
 import HomeIcon from '@/ui/icons/home.svg';
 import styles from './HomeSidebar.module.scss';

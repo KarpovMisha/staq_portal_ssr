@@ -18,7 +18,7 @@ export default function ActionsDropdown({
   trigger,
   content,
   dropdownWidth = 200,
-  offset = 6,
+  offset = 1,
   onOpenChange,
 }: DropdownProps) {
   const [open, setOpen] = useState(false);
@@ -48,6 +48,15 @@ export default function ActionsDropdown({
 
     document.addEventListener("mousedown", onPointerDown);
     return () => document.removeEventListener("mousedown", onPointerDown);
+  }, [open, setOpenState]);
+
+  useEffect(() => {
+    if (!open) return;
+
+    const closeOnScroll = () => setOpenState(false);
+
+    window.addEventListener("scroll", closeOnScroll, true);
+    return () => window.removeEventListener("scroll", closeOnScroll, true);
   }, [open, setOpenState]);
 
   const handleToggle = () => {
