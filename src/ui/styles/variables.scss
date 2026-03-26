@@ -6,13 +6,14 @@
   --scrollbar-thumb-bg: #787a84;
 
   --surface-primary: #fff;
+  --surface-tertiary:  #F2F2F3;
   --bg-primary: #fff;
   --bg-primary-inverted: #18181B;
   --bg-secondary: #fafafa;
   --bg-tertiary: #A9A9AF;
   --bg-error: #2E0C05;
   --bg-success: #053311;
-  --border-primary: #e9e9eb;
+  --border-primary: #DBDBDD;
   --border-tertiary: #717179;
   --border-primary-reverse: #3F3F45;
   --border-error: #CC3314;
@@ -27,6 +28,7 @@
 
 html.dark-theme {
   --surface-primary: #2C2C2F;
+  --surface-tertiary: #1F1F22 ;
   --bg-primary: #18181B;
   --bg-primary-inverted: #fff;
   --bg-secondary: #27272A;

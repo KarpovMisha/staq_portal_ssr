@@ -4,16 +4,16 @@ import Switch from 'react-switch';
 import SunIcon from '@/ui/icons/sun.svg';
 import MoonIcon from '@/ui/icons/moon.svg';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { selectIsDarkMode, switcherActions, toggleTheme } from '@/store/slices/switcher';
+import { selectIsDarkMode, toggleTheme } from '@/store/slices/switcher';
+import styles from './Switcher.module.scss';
 
 export default function Switcher() {
-  const handleDiameter = 17;
-  const height = 11;
-  const width = 27;
+  const handleDiameter = 14;
+  const height = 16;
+  const width = 32;
   const dispatch = useAppDispatch();
   const isSwitcherOpen = useAppSelector(selectIsDarkMode);
-  const primaryColor = '#823CD7';
-  // const primaryColor = themeConfig['--project-primary-docs-color'] || '#823CD7';
+
 
   function handleChange () {
     dispatch(toggleTheme(!isSwitcherOpen));
@@ -23,15 +23,15 @@ export default function Switcher() {
       <Switch
         checked={isSwitcherOpen}
         onChange={handleChange}
-        onColor="#4B4D5B"
-        onHandleColor={primaryColor}
-        offColor="#D2D3D6"
-        offHandleColor={primaryColor}
+        onColor="#1F1F22"
+        offColor="#F2F2F3"
+        onHandleColor="#2C2C2F"
+        offHandleColor="#ffffff"
         handleDiameter={handleDiameter}
         uncheckedIcon={false}
         checkedIcon={false}
-        uncheckedHandleIcon={<SunIcon />}
-        checkedHandleIcon={<MoonIcon />}
+        uncheckedHandleIcon={<div className={styles.switcher__icon}><SunIcon /></div>}
+        checkedHandleIcon={<div className={styles.switcher__icon}><MoonIcon /></div>}
         height={height}
         width={width}
       />
