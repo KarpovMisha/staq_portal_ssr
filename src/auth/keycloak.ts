@@ -1,21 +1,22 @@
 export const keycloak = {
-  issuer: process.env.KEYCLOAK_ISSUER!,
+  issuer: process.env.KEYCLOAK_URL!,
   clientId: process.env.KEYCLOAK_CLIENT_ID!,
-  redirectUri: process.env.KEYCLOAK_REDIRECT_URI!,
-  appUrl: process.env.NEXT_PUBLIC_APP_URL!,
+  realm: process.env.KEYCLOAK_REALM!,
+  redirectUri: new URL('/api/auth/callback', process.env.NEXT_APP_URL!).toString(),
+  appUrl: process.env.NEXT_APP_URL!,
   authUrl() {
-    return `${this.issuer}/protocol/openid-connect/auth`;
+    return `${this.issuer}/realms/${this.realm}/protocol/openid-connect/auth`;
   },
   tokenUrl() {
-    return `${this.issuer}/protocol/openid-connect/token`;
+    return `${this.issuer}/realms/${this.realm}/protocol/openid-connect/token`;
   },
   logoutUrl() {
-    return `${this.issuer}/protocol/openid-connect/logout`;
+    return `${this.issuer}/realms/${this.realm}/protocol/openid-connect/logout`;
   },
   userInfoUrl() {
-    return `${this.issuer}/protocol/openid-connect/userinfo`;
+    return `${this.issuer}/realms/${this.realm}/protocol/openid-connect/userinfo`;
   },
   registerUrl() {
-    return `${this.issuer}/protocol/openid-connect/registrations`;
+    return `${this.issuer}/realms/${this.realm}/protocol/openid-connect/registrations`;
   }
 };

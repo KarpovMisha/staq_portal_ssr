@@ -22,7 +22,10 @@ export async function GET(req: NextRequest) {
   const session = await exchangeCodeForTokens(code, codeVerifier);
 
   if (!session) {
-    const res = NextResponse.redirect(new URL('/login', req.url));
+    const returnTo = req.cookies.get('return_to')?.value || '/';
+    const loginUrl = new URL('/api/auth/login', req.url);
+    loginUrl.searchParams.set('returnTo', returnTo);
+    const res = NextResponse.redirect(loginUrl);
     clearPkceCookies(res);
     res.cookies.delete('return_to');
     return res;

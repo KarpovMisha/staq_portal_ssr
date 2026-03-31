@@ -4,6 +4,7 @@ import { cookies } from 'next/headers';
 import { decodeJwt } from 'jose';
 import { NextResponse } from 'next/server';
 import { keycloak } from './keycloak';
+import { shouldUseInsecureKeycloakTls, requestWithOptionalInsecureTls } from './keycloak-tls-insecure';
 
 function base64url(input: Buffer | string) {
   return Buffer.from(input)
@@ -32,8 +33,13 @@ async function safeFetch(
 ) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), timeoutMs);
+  const url = typeof input === 'string' ? new URL(input) : input;
 
   try {
+    if (shouldUseInsecureKeycloakTls(url)) {
+      return await requestWithOptionalInsecureTls(url, init, timeoutMs);
+    }
+
     return await fetch(input, {
       ...init,
       signal: controller.signal,
@@ -43,6 +49,8 @@ async function safeFetch(
     clearTimeout(timeout);
   }
 }
+
+
 
 export function createState() {
   return base64url(crypto.randomBytes(32));
@@ -233,7 +241,6 @@ export function buildRegisterUrl() {
   url.searchParams.set('code_challenge', codeChallenge);
   url.searchParams.set('code_challenge_method', 'S256');
 
-  // Для Keycloak это надёжнее, чем replace(/\/auth$/, '/registrations')
   url.searchParams.set('prompt', 'create');
 
   return {

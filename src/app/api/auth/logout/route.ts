@@ -16,7 +16,7 @@ export async function GET(req: NextRequest) {
   const session = await getSession();
 
   const postLogoutRedirectUri =
-    process.env.NEXT_PUBLIC_APP_URL || new URL('/', req.url).toString();
+    process.env.NEXT_APP_URL || new URL('/', req.url).toString();
 
   const logoutUrl = new URL(keycloak.logoutUrl());
   logoutUrl.searchParams.set('post_logout_redirect_uri', postLogoutRedirectUri);

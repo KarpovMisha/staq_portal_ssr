@@ -12,11 +12,11 @@ async function handler(
   context: { params: Promise<{ path: string[] }> }
 ) {
   try {
-    const API_BASE_URL = process.env.API_BASE_URL;
+    const NEXT_APP_API = process.env.NEXT_APP_API;
 
-    if (!API_BASE_URL) {
+    if (!NEXT_APP_API) {
       return NextResponse.json(
-        { error: 'Missing API_BASE_URL' },
+        { error: 'Missing NEXT_APP_API' },
         { status: 500 }
       );
     }
@@ -49,7 +49,7 @@ async function handler(
       }
     }
 
-    const targetUrl = new URL(`${API_BASE_URL}/${path.join('/')}`);
+    const targetUrl = new URL(`${NEXT_APP_API}/${path.join('/')}`);
     targetUrl.search = req.nextUrl.search;
 
     const headers = new Headers();
